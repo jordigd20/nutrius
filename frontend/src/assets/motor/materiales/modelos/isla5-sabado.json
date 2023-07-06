@@ -1,0 +1,357 @@
+{
+	 "__metadata__": {
+		 "format": "assimp2json"
+		,"version": 100
+	}
+	,"rootnode": {
+		 "name": "isla5-sabado.obj"
+		,"transformation": [
+			 1
+			,0
+			,0
+			,0
+			,0
+			,1
+			,0
+			,0
+			,0
+			,0
+			,1
+			,0
+			,0
+			,0
+			,0
+			,1
+		]
+		,"children": [
+			{
+				 "name": "Plane"
+				,"transformation": [
+					 1
+					,0
+					,0
+					,0
+					,0
+					,1
+					,0
+					,0
+					,0
+					,0
+					,1
+					,0
+					,0
+					,0
+					,0
+					,1
+				]
+			}
+			,{
+				 "name": "Plane_Plane_Material.007"
+				,"transformation": [
+					 1
+					,0
+					,0
+					,0
+					,0
+					,1
+					,0
+					,0
+					,0
+					,0
+					,1
+					,0
+					,0
+					,0
+					,0
+					,1
+				]
+				,"meshes": [
+					 0
+				]
+			}
+		]
+	}
+	,"flags": 0
+	,"meshes": [
+		{
+			 "name": "Plane_Plane_Material.007"
+			,"materialindex": 1
+			,"primitivetypes": 4
+			,"vertices": [
+				 0.642191
+				,0.098121
+				,-0.353145
+				,0.287431
+				,0.106436
+				,-8e-05
+				,0.666455
+				,0.076687
+				,-0.030567
+				,0.642191
+				,0.098121
+				,-0.353145
+				,0.263167
+				,0.12787
+				,-0.322658
+				,0.287431
+				,0.106436
+				,-8e-05
+			]
+			,"normals": [
+				 0.0829
+				,0.9948
+				,0.0599
+				,0.0829
+				,0.9948
+				,0.0599
+				,0.0829
+				,0.9948
+				,0.0599
+				,0.0829
+				,0.9948
+				,0.0599
+				,0.0829
+				,0.9948
+				,0.0599
+				,0.0829
+				,0.9948
+				,0.0599
+			]
+			,"numuvcomponents": [
+				 2
+			]
+			,"texturecoords": [
+				[
+					 1
+					,0
+					,0
+					,1
+					,0
+					,0
+					,1
+					,0
+					,1
+					,1
+					,0
+					,1
+				]
+			]
+			,"faces": [
+				[
+					 0
+					,1
+					,2
+				]
+				,[
+					 3
+					,4
+					,5
+				]
+			]
+		}
+	]
+	,"materials": [
+		{
+			 "properties": [
+				{
+					 "key": "?mat.name"
+					,"semantic": 0
+					,"index": 0
+					,"type": 3
+					,"value": "DefaultMaterial"
+				}
+				,{
+					 "key": "$mat.shadingm"
+					,"semantic": 0
+					,"index": 0
+					,"type": 4
+					,"value": 2
+				}
+				,{
+					 "key": "$clr.ambient"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$clr.diffuse"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0.6
+						,0.6
+						,0.6
+					]
+				}
+				,{
+					 "key": "$clr.specular"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$clr.emissive"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$mat.shininess"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 0
+				}
+				,{
+					 "key": "$mat.opacity"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1
+				}
+				,{
+					 "key": "$clr.transparent"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 1
+						,1
+						,1
+					]
+				}
+				,{
+					 "key": "$mat.refracti"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1
+				}
+			]
+		}
+		,{
+			 "properties": [
+				{
+					 "key": "?mat.name"
+					,"semantic": 0
+					,"index": 0
+					,"type": 3
+					,"value": "Material.007"
+				}
+				,{
+					 "key": "$mat.shadingm"
+					,"semantic": 0
+					,"index": 0
+					,"type": 4
+					,"value": 3
+				}
+				,{
+					 "key": "$clr.ambient"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 1
+						,1
+						,1
+					]
+				}
+				,{
+					 "key": "$clr.diffuse"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0.8
+						,0.8
+						,0.8
+					]
+				}
+				,{
+					 "key": "$clr.specular"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0.5
+						,0.5
+						,0.5
+					]
+				}
+				,{
+					 "key": "$clr.emissive"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$mat.shininess"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 225
+				}
+				,{
+					 "key": "$mat.opacity"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1
+				}
+				,{
+					 "key": "$clr.transparent"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 1
+						,1
+						,1
+					]
+				}
+				,{
+					 "key": "$mat.refracti"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1.45
+				}
+				,{
+					 "key": "$tex.file"
+					,"semantic": 1
+					,"index": 0
+					,"type": 3
+					,"value": "C:\\\\Users\\\\mytm\\\\OneDrive\\\\Documentos\\\\Universidad\\\\4º año\\\\2º cuatri\\\\TAG\\\\modelos - mika\\\\modelos obj\\\\texturas\\\\cartelbuscado.jpg"
+				}
+				,{
+					 "key": "$tex.uvwsrc"
+					,"semantic": 1
+					,"index": 0
+					,"type": 4
+					,"value": 0
+				}
+			]
+		}
+	]
+}

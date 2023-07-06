@@ -1,0 +1,224 @@
+<div class="card-header d-flex justify-content-between quicksand-font">
+    <h3 class="mb-0" style="font-size: 1.2rem;">Gestión de recompensas</h3>
+    <a [routerLink]="'/inicio/'" class="btn btn-crear">Volver</a>
+</div>
+
+<div class="container-fluid quicksand-font" style="background-color: #fff;">
+
+    <div class="d-md-flex">
+        <div class="gestion-recompensas">
+            <h1 class="pt-5 mx-3 mx-md-5 font-weight-bold">¡Cambia los puntos por recompensas!</h1>
+            <p class="pt-2 px-md-5" style="font-weight: 600;">
+                En NutriUs cada comida completada suma puntos. Estos puntos son de libre elección para los tutores y sirven para motivar a los niños a seguir con la rutina, pudiendo gastar los puntos en las recompensas que los tutores establecen.
+            </p>
+        </div>
+
+
+        <div class="container-gestion-puntos gestion-recompensas-puntos d-flex justify-content-around align-items-center flex-wrap">
+            <div class="info-puntos p-3 mt-5 mb-3 rounded d-flex flex-column align-items-center" style="background-color: var(--fondo-claro);">
+                <span *ngIf="perfil" class="nombre-perfil">{{perfil.nombre}}</span>
+                <div class="d-flex align-items-center">
+                    <span *ngIf="perfil" class="num-puntos">{{perfil.puntos_ganados}}</span>
+                    <i class="ml-2 fas fa-circle"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Container-gestion-puntos -->
+    </div>
+    <div class="mx-3 mx-md-5">
+        <h3 *ngIf="perfil">¿Cuántos puntos ganará {{perfil.nombre}} por comida?</h3>
+        <ul class="lista-puntos d-flex flex-wrap mt-4">
+            <li class="p-2 my-1 mx-auto rounded">Desayuno: {{puntos[0]}} <i class="lista-puntos fas fa-circle"></i></li>
+            <li class="p-2 my-1 mx-auto rounded">Almuerzo: {{puntos[1]}} <i class="lista-puntos fas fa-circle"></i></li>
+            <li class="p-2 my-1 mx-auto rounded">Comida: {{puntos[2]}} <i class="lista-puntos fas fa-circle"></i></li>
+            <li class="p-2 my-1 mx-auto rounded">Merienda: {{puntos[3]}} <i class="lista-puntos fas fa-circle"></i></li>
+            <li class="p-2 my-1 mx-auto rounded">Cena: {{puntos[4]}} <i class="fas fa-circle"></i></li>
+        </ul>
+    </div>
+
+    <div class="tabla-gestion-recompensas">
+        <div class="pt-2 mx-3 mx-md-5 d-flex align-items-center flex-wrap">
+            <h3 *ngIf="canjeadas" class="my-1 font-weight-bold">Lista de recompensas compradas</h3>
+            <h3 *ngIf="!canjeadas" class="my-1 font-weight-bold">Lista de recompensas disponibles</h3>
+            <button class="btn my-1 mx-4 btn-primary font-weight-bold" (click)="openModal(template, true, '', 0)">
+              <i class="fas fa-plus mr-2"></i> Crear recompensa
+            </button>
+            <button class="btn my-1 mx-4 btn-primary font-weight-bold" (click)="openModal(updatePuntos, true, '', 0)">
+              <i class="fas fa-edit"></i> Cambiar puntuación Comidas
+            </button>
+
+        </div>
+        <button *ngIf="canjeadas" class="btn btn-cambiar ml-5" (click)="cargarRecompensas(false)">
+            Mostrar Disponibles
+          </button>
+        <button *ngIf="!canjeadas" class="btn btn-cambiar ml-5" (click)="cargarRecompensas(true)">
+            Mostrar Compradas
+          </button>
+        <ng-template #template>
+          <div class="row quicksand-font">
+            <div class="col">
+              <div class="card mb-0">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="modal-title pull-left">{{titulo}}</h4>
+                  </div>
+                  <div class="form-section" id="cambiar-password" style="border-radius: .375rem;">
+                    <div class="form-content quicksand-font">
+                      <form [formGroup]="dataForm">
+                        <div class="row align-items-center">
+                          <div class="form-group col-12">
+                            <label for="nombre" class="col-form-label">Título de la Recompensa</label>
+                            <div>
+                              <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="" value={{title}}>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                          <div class="form-group col-12">
+                            <label for="puntos" class="col-form-label">Puntos</label><br>
+                            <div>
+                                <input type="number" class="form-control" formControlName="puntos" id="puntos" placeholder="" value={{puntuacion}}>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="text-right">
+                          <button type="button" class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+                          <button type="submit" class="btn btn-primario" (click)="crearRecompensa()">Guardar</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #updatePuntos>
+          <div class="row quicksand-font">
+            <div class="col">
+              <div class="card mb-0">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h4 class="modal-title pull-left">¿Cuántos puntos se ganará por comida completada?</h4>
+                </div>
+
+                <div class="form-section" style="border-radius: .375rem;">
+                  <div class="form-content pt-4 pb-0">
+                    <form [formGroup]="puntosForm">
+                        <div class="form-group row justify-content-center align-items-center ">
+                            <label for="desayuno" class="col-sm-4 col-form-label">Desayuno</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" formControlName="desayuno" id="desayuno" value={{puntos[0]}}>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center align-items-center ">
+                            <label for="almuerzo" class="col-sm-4 col-form-label">Almuerzo</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" formControlName="almuerzo" id="almuerzo" value={{puntos[1]}}>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center align-items-center ">
+                            <label for="comida" class="col-sm-4 col-form-label medium-font">Comida</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" formControlName="comida" id="comida" value={{puntos[2]}}>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center align-items-center ">
+                            <label for="merienda" class="col-sm-4 col-form-label medium-font">Merienda</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" formControlName="merienda" id="merienda" value={{puntos[3]}}>
+                            </div>
+                        </div>
+                        <div class="form-group row justify-content-center align-items-center ">
+                            <label for="cena" class="col-sm-4 col-form-label ">Cena</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control" formControlName="cena" id="cena" value={{puntos[4]}}>
+                            </div>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+
+                <div class="modal-footer text-right">
+                  <button class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+                  <button class="btn btn-primario" (click)="actualizarPuntos()">Guardar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #confirmarCompra>
+          <div class="row quicksand-font">
+            <div class="col">
+              <div class="card mb-0">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h4 class="modal-title pull-left">Comprar recompensa</h4>
+                </div>
+
+                <div class="modal-body medium-font">
+                  <p>¿Estás seguro de que quieres comprar esta recompensa? Se restarán los puntos al perfil.</p>
+                  <p class="rec-modal">Recompensa: {{recompensaCompr.nombre}}</p>
+                  <p class="rec-modal">Puntos: {{recompensaCompr.puntos}}</p>
+                  <p>{{perfil.nombre}} se quedaría con {{puntosHipo}} puntos.</p>
+                </div>
+
+                <div class="modal-footer text-right">
+                    <button class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+                    <button class="btn btn-primario" (click)="comprarRecompensa('')">Confirmar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+        </ng-template>
+
+        <div class="px-md-5 table-responsive pt-4">
+            <table class="table table-flush text-center" id="datatable-basic">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Recompensa</th>
+                        <th>Puntos</th>
+                        <th *ngIf="!canjeadas">Acciones</th>
+                        <th *ngIf="!canjeadas">Comprar</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr *ngIf="listaRecompensas.length === 0">
+                      <td colspan="6"> No se ha encontrado ningún resultado </td>
+                    </tr>
+                    <tr *ngFor="let recompensa of listaRecompensas">
+                        <td>{{recompensa.nombre}}</td>
+                        <td>{{recompensa.puntos}} <i class="fas fa-circle"></i> </td>
+                        <td *ngIf="!canjeadas">
+                            <button class="btn btn-gris" (click)="openModal(template, false, recompensa.uid, 0)">
+                              <i class="fas fa-edit"></i> Editar
+                            </button>
+                            <button class="btn btn-gris" (click)="borrarRecompensa(recompensa.uid)">
+                              <i class="fas fa-trash-alt"></i> Eliminar
+                            </button>
+                        </td>
+                        <td *ngIf="!canjeadas">
+                            <script type="text/javascript">
+                                estaDisponible(recompensa.uid);
+                            </script>
+                            <button *ngIf="recompensa.canjeable" class="disponible btn btn-crear" (click)="openModal(confirmarCompra, true, recompensa.uid, 3)">
+                              <i  class="fas fa-circle"></i> Comprar
+                            </button>
+                            <div *ngIf="!recompensa.canjeable" class="no-disponible">
+                                <i class="fas fa-circle"></i> Comprar
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Container-tabla -->
+        <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [totalRegistros]="totalRecompensas" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+    </div>
+</div>
+<app-footer></app-footer>

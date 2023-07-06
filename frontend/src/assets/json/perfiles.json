@@ -1,0 +1,671 @@
+[{
+  "_id": {
+    "$oid": "6186c5e50d55fe4a99d49481"
+  },
+  "nombre": "Jordi",
+  "usuario": {
+    "$oid": "6186c8d82862a93ba0da93f1"
+  },
+  "fecha_nacimiento": {
+    "$date": "2016-09-06T22:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 25,
+  "altura_actual": 1,
+  "peso_objetivo": 18,
+  "fecha_objetivo": {
+    "$date": "2022-03-31T23:00:00Z"
+  },
+  "objetivo": "Perder peso",
+  "avatar": "",
+  "intolerancias": [
+    "cacahuetes"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6186ca4f2862a93ba0da9402"
+  },
+  "nombre": "Bea",
+  "usuario": {
+    "$oid": "6186c8d82862a93ba0da93f1"
+  },
+  "fecha_nacimiento": {
+    "$date": "2016-05-08T22:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 15.5,
+  "altura_actual": 0.95,
+  "peso_objetivo": 18,
+  "fecha_objetivo": {
+    "$date": "2022-05-01T23:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a5589"
+  },
+  "nombre": "Laura",
+  "usuario": {
+    "$oid": "6186c8d82862a93ba0da93f1"
+  },
+  "fecha_nacimiento": {
+    "$date": "2016-02-02T22:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 25,
+  "altura_actual": 1,
+  "peso_objetivo": 18,
+  "fecha_objetivo": {
+    "$date": "2022-03-31T23:00:00Z"
+  },
+  "objetivo": "Perder peso",
+  "avatar": "",
+  "intolerancias": [],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "619bef3edb49f31ef344c3f9"
+  },
+  "nombre": "Carmen",
+  "usuario": {
+    "$oid": "6193d7435bca0dafb8a49536"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "crustaceos"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a558a"
+  },
+  "nombre": "Maria",
+  "usuario": {
+    "$oid": "6193d7435bca0dafb8a49536"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "crustaceos"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a558b"
+  },
+  "nombre": "Silvia",
+  "usuario": {
+    "$oid": "6193d7475bca0dafb8a49539"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "moluscos"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a558c"
+  },
+  "nombre": "Jorge",
+  "usuario": {
+    "$oid": "6193d7475bca0dafb8a49539"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 25,
+  "altura_actual": 1,
+  "peso_objetivo": 18,
+  "fecha_objetivo": {
+    "$date": "2022-03-31T23:00:00Z"
+  },
+  "objetivo": "Perder peso",
+  "avatar": "",
+  "intolerancias": [
+    "cacahuetes"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a558d"
+  },
+  "nombre": "Ana",
+  "usuario": {
+    "$oid": "6193d74a5bca0dafb8a4953c"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a558e"
+  },
+  "nombre": "Lucia",
+  "usuario": {
+    "$oid": "6193d7525bca0dafb8a49542"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 25,
+  "altura_actual": 1,
+  "peso_objetivo": 18,
+  "fecha_objetivo": {
+    "$date": "2022-03-31T23:00:00Z"
+  },
+  "objetivo": "Perder peso",
+  "avatar": "",
+  "intolerancias": [
+    "huevos"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a558f"
+  },
+  "nombre": "Angel",
+  "usuario": {
+    "$oid": "6193d7525bca0dafb8a49542"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten",
+    "lacteos"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a5590"
+  },
+  "nombre": "Oscar",
+  "usuario": {
+    "$oid": "6193d7555bca0dafb8a49545"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 25,
+  "altura_actual": 1,
+  "peso_objetivo": 18,
+  "fecha_objetivo": {
+    "$date": "2022-03-31T23:00:00Z"
+  },
+  "objetivo": "Perder peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a5591"
+  },
+  "nombre": "Emilio",
+  "usuario": {
+    "$oid": "6193d75c5bca0dafb8a49548"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "cacahuetes"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c364af1ca0e52b164a5592"
+  },
+  "nombre": "Carolina",
+  "usuario": {
+    "$oid": "6193d75c5bca0dafb8a49548"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a5595"
+  },
+  "nombre": "Nicolas",
+  "usuario": {
+    "$oid": "6193d7605bca0dafb8a4954b"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a5596"
+  },
+  "nombre": "Samuel",
+  "usuario": {
+    "$oid": "6193d7605bca0dafb8a4954b"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a5597"
+  },
+  "nombre": "Aitor",
+  "usuario": {
+    "$oid": "6193d7655bca0dafb8a4954e"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a5598"
+  },
+  "nombre": "Felipe",
+  "usuario": {
+    "$oid": "6193d7655bca0dafb8a4954e"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a5599"
+  },
+  "nombre": "Rodrigo",
+  "usuario": {
+    "$oid": "6193d7775bca0dafb8a49551"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a559a"
+  },
+  "nombre": "Luis",
+  "usuario": {
+    "$oid": "6193d7775bca0dafb8a49551"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a559b"
+  },
+  "nombre": "Victor",
+  "usuario": {
+    "$oid": "6193d7815bca0dafb8a49554"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a559c"
+  },
+  "nombre": "Cristian",
+  "usuario": {
+    "$oid": "6193d7815bca0dafb8a49554"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a559d"
+  },
+  "nombre": "Ismael",
+  "usuario": {
+    "$oid": "6193d7895bca0dafb8a49557"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑO",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a559e"
+  },
+  "nombre": "Maria Elena",
+  "usuario": {
+    "$oid": "6193d7895bca0dafb8a49557"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a559f"
+  },
+  "nombre": "Ana Belen",
+  "usuario": {
+    "$oid": "6193d7915bca0dafb8a4955a"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a55a0"
+  },
+  "nombre": "Martina",
+  "usuario": {
+    "$oid": "6193d7915bca0dafb8a4955a"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a55a1"
+  },
+  "nombre": "Veronica",
+  "usuario": {
+    "$oid": "6193d74e5bca0dafb8a4953f"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "61c36c381ca0e52b164a55a2"
+  },
+  "nombre": "Noelia",
+  "usuario": {
+    "$oid": "6193d74e5bca0dafb8a4953f"
+  },
+  "fecha_nacimiento": {
+    "$date": "2017-06-05T00:00:00Z"
+  },
+  "sexo": "NIÑA",
+  "peso_actual": 14.75,
+  "altura_actual": 0.85,
+  "peso_objetivo": 17,
+  "fecha_objetivo": {
+    "$date": "2022-07-01T00:00:00Z"
+  },
+  "objetivo": "Ganar peso",
+  "avatar": "",
+  "intolerancias": [
+    "gluten"
+  ],
+  "activo": true,
+  "__v": 0
+}]

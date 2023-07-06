@@ -1,0 +1,182 @@
+<!-- Page content -->
+
+<div class="fact quicksand-font">
+
+    <div class="">
+        <div class="card-header d-flex justify-content-between">
+            <h3 class="mb-0" style="font-size: 1.2rem;">Datos de Subscripción</h3>
+            <a routerLink="/inicio/premium" class="btn btn-crear">Volver</a>
+        </div>
+        <div class="facturacion-container">
+            <div class="form-content">
+              <form [formGroup]="facturaForm" (ngSubmit)="hacerPago()">
+                <div class="row">
+                  <!-- Seccion lateral -->
+                  <div class="side-section px-4 col-12 col-lg-3">
+                    <h3 class="mt-3 text-center">Plan seleccionado</h3>
+                    <div class="card-select plan-seleccionado">
+                      <div class="card-divider">
+                        <p class="titulo">{{planSeleccionado.nombre}}</p>
+                        <p *ngIf="planSeleccionado.ahorrar != '0'" class="mb-0">Ahorra {{planSeleccionado.ahorrar}}€</p>
+                      </div>
+                      <div class="card-section">
+                        <div class="d-flex align-items-center">
+                          <h5 class="mr-1">{{planSeleccionado.precio}}€</h5>
+                          <p class="mb-0">{{planSeleccionado.tiempo}}</p>
+                        </div>
+                        <ul class="lista-ventajas">
+                            <li><i class="fas fa-check text-success mr-2"></i>Menús exclusivos</li>
+                            <li><i class="fas mr-2" [ngClass]="{'fa-times': planSeleccionado.tipo == 'gratis',
+                                                                'fa-check': planSeleccionado.tipo != 'gratis',
+                                                                'text-success': planSeleccionado.tipo != 'gratis'}"></i>Personalización de menús</li>
+                            <li><i class="fas mr-2" [ngClass]="{'fa-times': planSeleccionado.tipo == 'gratis',
+                                                                'fa-check': planSeleccionado.tipo != 'gratis',
+                                                                'text-success': planSeleccionado.tipo != 'gratis'}"></i>Sin publicidad</li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    <h3 class="mt-3 text-center">Método de pago *</h3>
+
+                    <div class="metodo-pago mb-2">
+                      <label for="paypal">
+                        <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" alt="PayPal Logo">
+                        <span class="mx-3 ">Pago con paypal</span>
+                      </label>
+                      <input #paypal type="radio" id="paypal" name="metodo-pago" (change)="cambiarMetodoPago(2)" checked>
+                    </div>
+
+                    <div class="mt-3" style="word-break: break-all;">
+                      <p *ngIf="metodoPago == 2" class="font-weight-bold text-center mb-0"> Utilizar esta cuenta de PayPal para pagar</p>
+                      <p *ngIf="metodoPago == 2" class="mb-0"> <span class="font-weight-bold">Usuario:</span> sb-texco15236089@personal.example.com</p>
+                      <p *ngIf="metodoPago == 2" class="mb-0"> <span class="font-weight-bold">Contraseña:</span> 0Y!:?&nT</p>
+                    </div>
+
+                  </div>
+
+                  <!-- Seccion principal -->
+                  <div class="form-section col-12 col-lg-9" id="usuario-facturacion">
+                      <h3 class="mt-3 text-center" style="border-bottom: 0!important;">Datos de Facturación</h3>
+                      <div class="form-content py-0 px-5">
+
+                        <div class="row align-items-center">
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="nombre" class="col-form-label">Nombre *</label>
+                              <div>
+                                  <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('nombre')}" formControlName="nombre" id="nombre">
+                                  <p class="small font-italic text-danger" *ngIf="!campoValido('nombre')">* El nombre es obligatorio</p>
+                              </div>
+                          </div>
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="apellidos" class="col-form-label">Apellidos *</label>
+                              <div>
+                                  <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('apellidos')}" formControlName="apellidos" id="apellidos">
+                                  <p class="small font-italic text-danger" *ngIf="!campoValido('apellidos')">* Los apellidos son obligatorios</p>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="fecha_nacimiento" class="col-form-label">Fecha de Nacimiento *</label>
+                              <div>
+                                  <input type="date" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('fecha_nacimiento')}" formControlName="fecha_nacimiento" id="fecha_nacimiento">
+                                  <p class="small font-italic text-danger" *ngIf="!campoValido('fecha_nacimiento')">* La fecha de nacimiento es obligatoria</p>
+                                  <p class="small font-italic text-danger" *ngIf="!validarFecha()">Debe ser una fecha válida</p>
+
+                              </div>
+                          </div>
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="dni" class="col-form-label">DNI / NIE *</label>
+                              <div>
+                                  <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('dni')}" formControlName="dni" id="dni">
+                                  <p class="small font-italic text-danger" *ngIf="!campoValido('dni')">* El DNI/NIE es obligatorio</p>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="movil" class="col-form-label">Móvil *</label>
+                              <div>
+                                  <input type="tel" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('movil')}" formControlName="movil" id="movil">
+                                  <p class="small font-italic text-danger" *ngIf="!campoValido('movil')">* El móvil es obligatorio</p>
+                              </div>
+                          </div>
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="direccion" class="col-form-label">Dirección *</label>
+                              <div>
+                                  <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('direccion')}" formControlName="direccion" id="direccion">
+                                  <p class="small font-italic text-danger" *ngIf="!campoValido('direccion')">* La dirección es obligatoria</p>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="piso" class="col-form-label">Piso y Puerta</label>
+                              <div>
+                                  <input type="text" class="form-control" formControlName="piso" id="piso">
+                              </div>
+                          </div>
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="codigo_postal" class="col-form-label">Código Postal *</label>
+                              <div>
+                                  <input type="number" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('codigo_postal')}" formControlName="codigo_postal" id="codigo_postal">
+                                  <p class="small font-italic text-danger" *ngIf="!campoValido('codigo_postal')">* El código postal es obligatorio</p>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                          <div class="form-group col-12 col-sm-6">
+                            <label for="provincia" class="col-form-label">Provincia *</label>
+                            <div>
+                                <input list="lista-provincias" (focus)="cargarListaProvincias()" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('provincia')}" formControlName="provincia" id="provincia">
+                                <p class="small font-italic text-danger" *ngIf="!campoValido('provincia')">* La provincia es obligatoria</p>
+                                <datalist id="lista-provincias">
+                                  <option *ngFor="let provincia of listaProvincias" value="{{provincia}}"></option>
+                                </datalist>
+                            </div>
+                          </div>
+                          <div class="form-group col-12 col-sm-6">
+                            <label for="poblacion" class="col-form-label">Población *</label>
+                            <div>
+                                <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('poblacion')}" formControlName="poblacion" id="poblacion">
+                                <p class="small font-italic text-danger" *ngIf="!campoValido('poblacion')">* La población es obligatoria</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                          <div class="form-group col-12 col-sm-6">
+                              <label for="pais" class="col-form-label">País *</label>
+                              <div>
+                                  <input list="lista-paises" (focus)="cargarListaPaises()" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('pais')}" formControlName="pais" id="pais">
+                                      <p class="small font-italic text-danger" *ngIf="!campoValido('pais')">* El país es obligatorio</p>
+                                  <datalist id="lista-paises">
+                                      <option *ngFor="let pais of listaPaises" value="{{pais}}"></option>
+                                  </datalist>
+                              </div>
+                          </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end my-3">
+                            <div #botonPaypal id="boton-paypal"></div>
+                            <button #botonPagar id="boton-pagar" type="submit" class="btn btn-primario" style="display: none;">
+                              <i *ngIf="waiting" class="fa fa-spinner fa-spin mr-2"></i>
+                              Pagar
+                            </button>
+                        </div>
+
+                      </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+
+</div>

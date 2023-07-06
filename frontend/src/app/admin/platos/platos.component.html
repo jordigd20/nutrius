@@ -1,0 +1,87 @@
+<!-- Topnav -->
+<app-navbar-admin></app-navbar-admin>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="mb-0">Platos</h3>
+                    <button class="btn btn-crear" routerLink="/admin/platos/nuevo-plato"><i class="fas fa-plus"></i> Nuevo</button>
+                </div>
+                <div class="container-fluid mt-4">
+                    <div class="row">
+                        <div class="input-group col-12 col-xl-6 w-100">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="height: 95%;" id="basic-addon1"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input #txtBuscar type="text" class="form-control" (keyup)="cargarPlatos(txtBuscar.value)" style="height: 95%;" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <span class="input-group-text cursor-pointer" (click)="txtBuscar.value ='';cargarPlatos(txtBuscar.value)" style="height: 95%;"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert bg-primario-claro text-center my-3 pt-4" *ngIf="loading">
+                    <h4 class="alert-heading">Cargando!</h4>
+                    <i class="fa fa-spin fa-spinner fa-3x"></i>
+                    <p>Por favor, espere</p>
+                </div>
+                <div class="table-responsive py-4">
+                    <table class="table table-flush" id="datatable-basic">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Plato</th>
+                                <th>Comida</th>
+                                <th>Intolerancias</th>
+                                <th>Creador</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let plato of listaPlatos; let i = index;">
+                                <td>{{plato.nombre}}</td>
+                                <td>
+                                    <div *ngFor="let comida of plato.comida; let i = index">
+                                        <ng-container>{{comida}}</ng-container>
+                                    </div>
+                                </td>
+                                <td class="d-flex justify-content-center align-items-center">
+                                    <div class="intolerancias-plato mx-1" *ngFor="let alergia of plato.intolerancias; let i = index">
+                                        <img style="width: 25px;" [src]="intoleranciaIconoURL + alergia + '.svg'" alt="">
+                                    </div>
+                                </td>
+                                <td *ngIf="plato.usuario_id">{{listaCreadores[plato.usuario_id]}}</td>
+                                <td *ngIf="!plato.usuario_id">Administrador</td>
+                                <td>
+                                    <button [routerLink]="['/admin/platos/editar-plato/', plato.uid]" class="btn btn-gris mr-2" style="display: inline-block">
+                                      <i class="fas fa-pencil-alt text-primario mr-2"></i> Editar
+                                    </button>
+                                    <button class="btn btn-gris mr-2" [disabled]="listaPlatos[i].eliminando" (click)="eliminarPlato(plato.uid, plato.nombre!, plato.usuario_id, i)">
+                                      <i [ngClass]="listaPlatos[i].eliminando ? 'fa fa-spinner fa-spin' : 'fas fa-trash-alt'" class="mr-2"></i>
+                                      Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [texto]="true " [totalRegistros]="totalRegistros" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+            </div>
+
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

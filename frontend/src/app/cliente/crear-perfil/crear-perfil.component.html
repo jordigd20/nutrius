@@ -1,0 +1,166 @@
+<!-- Page content -->
+<div class="fact quicksand-font container-fluid mb-3 p-4">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Nuevo Perfil</h3>
+                    <a [routerLink]="'/inicio/'" class="btn btn-crear">Volver</a>
+                </div>
+
+                <div class="crear-perfil-grid">
+
+                    <div class="form-section" id="perfil-avatar">
+                        <h3 class="p-3 pl-4 text-center">Avatar del perfil</h3>
+                        <div class="px-3 py-5 d-flex flex-column flex-md-row justify-content-center align-items-center">
+                            <img class="img-thumbnail img-avatar" src={{avatarPerfilMostrar}} alt="" id="avatar">
+                            <div class="mt-4 mt-md-0 ml-md-5 grid-avatares">
+                                <img class="img-thumbnail cursor-img" src="../../../assets/img/avatar1.jpeg" alt="" (click)="elegirAvatar(1)">
+                                <img class="img-thumbnail cursor-img" src="../../../assets/img/avatar2.jpeg" alt="" (click)="elegirAvatar(2)">
+                                <img class="img-thumbnail cursor-img" src="../../../assets/img/avatar3.jpeg" alt="" (click)="elegirAvatar(3)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="perfil-crear-menus">
+                        <h3 class="p-3 pl-4 text-center">Datos para los menus</h3>
+                        <div class="form-content">
+                            <div class="mx-3 text-align-center">
+                                <form [formGroup]="perfilForm">
+
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="form-group col-8">
+                                            <span class="col-form-label">Objetivo *</span>
+                                            <div class="mt-1">
+                                                <select class="custom-select" [ngClass]="{'campo-incorrecto': !campoValido('objetivo', 'perfil')}" formControlName="objetivo" id="objetivo" (change)="habilitarPesoObj($event);">
+                                    <option selected value="Bajar de peso">Bajar de peso</option>
+                                    <option value="Subir de peso">Subir de peso</option>
+                                    <option value="Dieta saludable">Dieta saludable</option>
+                                  </select>
+                                                <p class="small text-danger font-italic" *ngIf="!campoValido('objetivo', 'perfil')">* El objetivo es obligatorio</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-8">
+                                            <span class="col-form-label">Intolerancias</span>
+                                            <div class="mt-1 checkIntolerancias">
+                                                <div *ngFor="let alergia of intoleranciasDisponibles; let i = index">
+                                                    <input formArrayName="intolerancias" type="checkbox" class="mr-2" id="{{alergia.name}}" name="{{alergia.name}}" [checked]="alergia.marcado" (change)="onCheckboxChange($event, alergia.id)">
+                                                    <label class="form-check-label light-font" for="{{alergia.name}}">
+                                      <img style="width: 25px;" [src]="intoleranciaIconoURL + alergia.img">
+                                      {{alergia.name.charAt(0).toUpperCase() + alergia.name.slice(1)}}
+                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="perfil-datos">
+                        <h3 class="p-3 pl-4 text-center">Datos personales</h3>
+                        <div class="form-content mx-3">
+                            <form [formGroup]="perfilForm">
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="nombre" class="col-form-label">Nombre *</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" formControlName="nombre" [ngClass]="{'campo-incorrecto': !campoValido('nombre', 'perfil')}" id="nombre" value={{nombrePerfil}}>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('nombre', 'perfil')">* El nombre es un campo obligatorio y no debe coincidir con el de otro perfil</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="apellidos" class="col-form-label">Apellidos *</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" formControlName="apellidos" [ngClass]="{'campo-incorrecto': !campoValido('apellidos', 'perfil')}" id="apellidos" value={{apellidosPerfil}}>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('apellidos', 'perfil')">* El apellido es un campo obligatorio</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="fecha_nacimiento" class="col-form-label">Fecha de nacimiento *</label>
+                                        <div class="">
+                                            <input type="date" class="form-control" formControlName="fecha_nacimiento" [ngClass]="{'campo-incorrecto': !campoValido('fecha_nacimiento', 'perfil')}" id="fecha_nacimiento">
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('fecha_nacimiento', 'perfil')">* La fecha de nacimiento es obligatoria y el perfil debe ser mayor a 4 años</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label class="col-form-label">Sexo *</label>
+                                        <div class="">
+                                            <select class="custom-select" [ngClass]="{'campo-incorrecto': !campoValido('sexo', 'perfil')}" formControlName="sexo" id="sexo">
+                                      <option selected value="NIÑA">Niña</option>
+                                      <option value="NIÑO">Niño</option>
+                                  </select>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('sexo', 'perfil')">* El sexo es obligatorio</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 col-sm-6 align-items-center mostrarPesoObj" *ngIf="objetivoPerfil !== 'Dieta saludable'">
+                                        <label for="peso_objetivo" class="col-form-label">Peso objetivo (kg) *</label>
+                                        <div class="">
+                                            <input type="number" class="form-control" formControlName="peso_objetivo" [ngClass]="{'campo-incorrecto': !campoValido('peso_objetivo', 'perfil')}" id="peso_objetivo">
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('peso_objetivo','perfil')">* El peso objetivo es obligatorio</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row aling-items-center">
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="fecha_objetivo" class="col-form-label">Fecha objetivo</label>
+                                        <div class="">
+                                            <input type="date" class="form-control" formControlName="fecha_objetivo" id="fecha_objetivo">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="perfil-seguimiento">
+                        <h3 class="p-3 pl-4 text-center">Datos para el seguimiento</h3>
+                        <div class="form-content">
+                            <form [formGroup]="seguimientoForm">
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="form-group col-8">
+                                        <label for="peso" class="col-form-label">Peso actual (kg) *</label>
+                                        <div class="">
+                                            <input type="number" min="0" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('peso', 'seguimiento')}" formControlName="peso" id="peso" value={{pesoPerfil}}>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('peso', 'seguimiento')">* El peso actual es obligatorio</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center align-items-center">
+                                    <div class="form-group col-8">
+                                        <label for="altura" class="col-form-label">Altura actual (cm) *</label>
+                                        <div class="">
+                                            <input type="number" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('altura', 'seguimiento')}" formControlName="altura" id="altura" value={{alturaPerfil}}>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('altura', 'seguimiento')">* La altura actual es obligatoria</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <div class="mt-5 pr-1 text-right">
+                                <button type="submit" [disabled]="waiting" class="btn btn-primario" (click)="crearPerfil()">
+                                    <i class="fa fa-spinner fa-spin mr-2"*ngIf="waiting"></i>
+                                    Guardar
+                                  </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

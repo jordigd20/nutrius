@@ -1,0 +1,3341 @@
+[{
+    "_id": {
+        "$oid": "62612266edf6fd66b9d5f3af"
+    },
+    "nombre": "isla1-base-bloqueado",
+    "posicion": [
+        0,
+        0,
+        0
+    ],
+    "escalado": [
+        1,
+        1,
+        1
+    ],
+    "rotacion": [
+        0,
+        180,
+        0
+    ]
+}, {
+    "_id": {
+        "$oid": "6273ed949c0f695fcdd104b5"
+    },
+    "nombre": "isla1-base",
+    "posicion": [
+        0,
+        0,
+        0
+    ],
+    "escalado": [
+        1,
+        1,
+        1
+    ],
+    "rotacion": [
+        0, -20,
+        0
+    ],
+    "objetos": [{
+            "nombre": "isla1-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "isla1-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "isla1-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "isla1-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "isla1-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "isla1-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "isla1-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "bases": [{
+            "nombre": "base-isla1-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "base-isla1-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "base-isla1-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "base-isla1-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "base-isla1-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "base-isla1-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "base-isla1-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -20,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "avatares": [{
+            "tipo": 1,
+            "modelos": [{
+                    "nombre": "monstruo1-isla1-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo1-isla1-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo1-isla1-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo1-isla1-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo1-isla1-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo1-isla1-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo1-isla1-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 2,
+            "modelos": [{
+                    "nombre": "monstruo2-isla1-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo2-isla1-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo2-isla1-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo2-isla1-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo2-isla1-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo2-isla1-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo2-isla1-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 3,
+            "modelos": [{
+                    "nombre": "monstruo3-isla1-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo3-isla1-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo3-isla1-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo3-isla1-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo3-isla1-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo3-isla1-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo3-isla1-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -20,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        }
+    ]
+}, {
+    "_id": {
+        "$oid": "6273ee399c0f695fcdd104b7"
+    },
+    "nombre": "isla2-base",
+    "posicion": [
+        0,
+        0,
+        0
+    ],
+    "escalado": [
+        1,
+        1,
+        1
+    ],
+    "rotacion": [
+        0, -50,
+        0
+    ],
+    "objetos": [{
+            "nombre": "isla2-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "isla2-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "isla2-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "isla2-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "isla2-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "isla2-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "isla2-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "bases": [{
+            "nombre": "base-isla2-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "base-isla2-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "base-isla2-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "base-isla2-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "base-isla2-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "base-isla2-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "base-isla2-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -50,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "avatares": [{
+            "tipo": 1,
+            "modelos": [{
+                    "nombre": "monstruo1-isla2-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo1-isla2-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo1-isla2-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo1-isla2-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo1-isla2-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo1-isla2-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo1-isla2-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 2,
+            "modelos": [{
+                    "nombre": "monstruo2-isla2-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo2-isla2-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo2-isla2-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo2-isla2-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo2-isla2-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo2-isla2-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo2-isla2-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 3,
+            "modelos": [{
+                    "nombre": "monstruo3-isla2-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo3-isla2-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo3-isla2-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo3-isla2-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo3-isla2-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo3-isla2-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo3-isla2-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -50,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        }
+    ]
+}, {
+    "_id": {
+        "$oid": "6273ee419c0f695fcdd104b8"
+    },
+    "nombre": "isla3-base",
+    "posicion": [
+        0,
+        0,
+        0
+    ],
+    "escalado": [
+        1,
+        1,
+        1
+    ],
+    "rotacion": [
+        0, -60,
+        0
+    ],
+    "objetos": [{
+            "nombre": "isla3-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "isla3-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "isla3-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "isla3-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "isla3-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "isla3-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "isla3-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "bases": [{
+            "nombre": "base-isla3-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "base-isla3-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "base-isla3-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "base-isla3-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "base-isla3-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "base-isla3-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "base-isla3-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -60,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "avatares": [{
+            "tipo": 1,
+            "modelos": [{
+                    "nombre": "monstruo1-isla3-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo1-isla3-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo1-isla3-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo1-isla3-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo1-isla3-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo1-isla3-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo1-isla3-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 2,
+            "modelos": [{
+                    "nombre": "monstruo2-isla3-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo2-isla3-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo2-isla3-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo2-isla3-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo2-isla3-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo2-isla3-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo2-isla3-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 3,
+            "modelos": [{
+                    "nombre": "monstruo3-isla3-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo3-isla3-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo3-isla3-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo3-isla3-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo3-isla3-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo3-isla3-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo3-isla3-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -60,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        }
+    ]
+}, {
+    "_id": {
+        "$oid": "6273ee969c0f695fcdd104b9"
+    },
+    "nombre": "isla4-base",
+    "posicion": [
+        0,
+        0,
+        0
+    ],
+    "escalado": [
+        1,
+        1,
+        1
+    ],
+    "rotacion": [
+        0, -90,
+        0
+    ],
+    "objetos": [{
+            "nombre": "isla4-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "isla4-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "isla4-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "isla4-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "isla4-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "isla4-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "isla4-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "bases": [{
+            "nombre": "base-isla4-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "base-isla4-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "base-isla4-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "base-isla4-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "base-isla4-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "base-isla4-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "base-isla4-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -90,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "avatares": [{
+            "tipo": 1,
+            "modelos": [{
+                    "nombre": "monstruo1-isla4-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo1-isla4-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo1-isla4-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo1-isla4-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo1-isla4-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo1-isla4-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo1-isla4-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 2,
+            "modelos": [{
+                    "nombre": "monstruo2-isla4-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo2-isla4-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo2-isla4-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo2-isla4-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo2-isla4-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo2-isla4-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo2-isla4-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 3,
+            "modelos": [{
+                    "nombre": "monstruo3-isla4-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo3-isla4-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo3-isla4-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo3-isla4-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo3-isla4-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo3-isla4-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo3-isla4-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -90,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        }
+    ]
+}, {
+    "_id": {
+        "$oid": "6273eeef9c0f695fcdd104bb"
+    },
+    "nombre": "isla5-base",
+    "posicion": [
+        0,
+        0,
+        0
+    ],
+    "escalado": [
+        1,
+        1,
+        1
+    ],
+    "rotacion": [
+        0, -75,
+        0
+    ],
+    "objetos": [{
+            "nombre": "isla5-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "isla5-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "isla5-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "isla5-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "isla5-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "isla5-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "isla5-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "bases": [{
+            "nombre": "base-isla5-lunes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "lunes"
+        },
+        {
+            "nombre": "base-isla5-martes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "martes"
+        },
+        {
+            "nombre": "base-isla5-miercoles",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "miercoles"
+        },
+        {
+            "nombre": "base-isla5-jueves",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "jueves"
+        },
+        {
+            "nombre": "base-isla5-viernes",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "viernes"
+        },
+        {
+            "nombre": "base-isla5-sabado",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "sabado"
+        },
+        {
+            "nombre": "base-isla5-domingo",
+            "traslacion": [
+                0,
+                0,
+                0
+            ],
+            "escalado": [
+                1,
+                1,
+                1
+            ],
+            "rotacion": [
+                0, -75,
+                0
+            ],
+            "dia": "domingo"
+        }
+    ],
+    "avatares": [{
+            "tipo": 1,
+            "modelos": [{
+                    "nombre": "monstruo1-isla5-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo1-isla5-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo1-isla5-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo1-isla5-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo1-isla5-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo1-isla5-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo1-isla5-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 2,
+            "modelos": [{
+                    "nombre": "monstruo2-isla5-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo2-isla5-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo2-isla5-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo2-isla5-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo2-isla5-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo2-isla5-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo2-isla5-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        },
+        {
+            "tipo": 3,
+            "modelos": [{
+                    "nombre": "monstruo3-isla5-lunes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "lunes"
+                },
+                {
+                    "nombre": "monstruo3-isla5-martes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "martes"
+                },
+                {
+                    "nombre": "monstruo3-isla5-miercoles",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "miercoles"
+                },
+                {
+                    "nombre": "monstruo3-isla5-jueves",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "jueves"
+                },
+                {
+                    "nombre": "monstruo3-isla5-viernes",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "viernes"
+                },
+                {
+                    "nombre": "monstruo3-isla5-sabado",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "sabado"
+                },
+                {
+                    "nombre": "monstruo3-isla5-domingo",
+                    "traslacion": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "escalado": [
+                        1,
+                        1,
+                        1
+                    ],
+                    "rotacion": [
+                        0, -75,
+                        0
+                    ],
+                    "dia": "domingo"
+                }
+            ]
+        }
+    ]
+}]

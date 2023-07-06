@@ -1,0 +1,11 @@
+.menu {
+  background-color: var(--primario-claro);
+  width: 100%!important;
+  height: 15vh!important;
+}
+
+#canvasMenu{
+  width: 100%!important;
+  height: 100%!important;
+
+}

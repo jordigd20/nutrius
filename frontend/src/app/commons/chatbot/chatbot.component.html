@@ -1,0 +1,73 @@
+<div class="chatbot-logo">
+    <button class="set-chatbot" (click)="mostrarChat()">
+      <img class="img-fluid" src="../../../assets/img/brand/logo_circular.png" alt="">
+    </button>
+</div>
+<div *ngIf="chatActivado" [@popOverAnimation] class="chatbot-chat-container quicksand-font">
+  <div class="chatbot-chat">
+    <header>
+      <h4 class="m-0">Asistente virtual</h4>
+      <button class="btn" (click)="cambiarChatActivado()"><i class="fas fa-times text-white"></i></button>
+    </header>
+    <main #chatContainer>
+
+      <div *ngIf="waiting && mostrarError" class="msg msg-agente">
+        ...
+      </div>
+
+      <div *ngIf="mostrarError" class="msg msg-agente">
+        <p class="mb-0">Lo siento, ha ocurrido un error inesperado, por favor, vuelve a intentarlo más tarde.</p>
+      </div>
+
+      <ng-container *ngFor="let item of mensajes">
+
+        <div class="msg" *ngIf="!item.respuesta.cards" [ngClass]="{'msg-agente': item.enviadoPor === 'agente', 'msg-usuario': item.enviadoPor === 'usuario'}">
+          <p class="mb-0" [ngClass]="{'pb-0': item.respuesta.quickReplies}">{{item.respuesta.text}}</p>
+          <div class="p-2 text-center"
+               *ngIf="item.respuesta.quickReplies">
+            <button (click)="enviarMensaje(btnRespuesta)" class="my-1" *ngFor="let btnRespuesta of item.respuesta.quickReplies">{{btnRespuesta}}</button>
+          </div>
+        </div>
+
+        <ng-container *ngIf="item.respuesta.cards">
+          <div class="msg msg-agente" *ngFor="let card of item.respuesta.cards">
+            <div class="card" [ngClass]="{'card-with-image': card.imageUri}">
+              <img *ngIf="card.imageUri" class="card-img-top" src="{{'../../../../../assets/img/platos/' + card.imageUri}}" alt="{{card.title}}">
+              <div class="card-body">
+                <h5 class="card-title">{{card.title}}</h5>
+                <ng-container *ngIf="card.subtitle.split('---').length !== 1">
+                  <p *ngFor="let text of card.subtitle.split('---'); let i = index"
+                      [ngClass]="i == card.subtitle.split('---').length-1 ? 'mb-2' : 'mb-0'" >
+                    <b>{{text.split(':')[0]}}</b>: {{text.split(':')[1]}}
+                  </p>
+                </ng-container>
+                <ng-container *ngIf="card.subtitle.split('---').length === 1">
+                  <p *ngIf="card.subtitle.split(':').length !== 1">
+                    <b>{{card.subtitle.split(':')[0]}}</b>: {{card.subtitle.split(':')[1]}}
+                  </p>
+                  <p *ngIf="card.subtitle.split(':').length === 1" class="card-text"> {{card.subtitle}} </p>
+                </ng-container>
+
+                <ng-container *ngIf="card.buttons.length !== 0">
+                  <a [routerLink]="card.buttons[0].postback" class="btn btn-primario">{{card.buttons[0].text}}</a>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </ng-container>
+
+      <div *ngIf="waiting" class="msg msg-agente">
+        <p class="mb-0">...</p>
+      </div>
+
+    </main>
+    <footer>
+      <form (ngSubmit)="enviarMensaje(input_mensaje.value)">
+        <input #input_mensaje [disabled]="mostrarError" [(ngModel)]="inputMensaje" [ngModelOptions]="{standalone: true}" class="py-2" type="text" style="border-color: #dee2e6!important;" placeholder="Escribe un mensaje aquí" class="form-control">
+        <button class="ml-1 rounded-circle" type="submit"><i class="fas fa-paper-plane"></i></button>
+      </form>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="card-footer py-4 d-flex justify-content-end align-items-center">
+  <div class="mr-3">
+    <div *ngIf="totalRegistros > 0">
+      Mostrando <b>{{registroActual}}</b> - <b>{{registroHasta}}</b> de <b>{{totalRegistros}}</b> resultados
+    </div>
+    <div *ngIf="totalRegistros <= 0">
+      No hay registros
+    </div>
+  </div>
+  <nav aria-label="Paginación">
+    <ul class="pagination flex-wrap justify-content-end mb-0">
+      <li class="page-item" [ngClass]="{'disabled' : paginaActual<=1}" (click)="cambiaPagina(1)">
+        <span class="page-link cursor-pointer" tabindex="-1">
+          <i class="fas fa-angle-double-left"></i>
+          <span class="sr-only">Previous</span>
+        </span>
+      </li>
+      <li class="page-item" [ngClass]="{'disabled' : paginaActual<=1}" (click)="cambiaPagina(paginaActual - 1)">
+        <span class="page-link cursor-pointer" tabindex="-1">
+          <i class="fas fa-angle-left"></i>
+          <span class="sr-only">Previous</span>
+        </span>
+      </li>
+      <li class="page-item" [ngClass]="{'active': numeropagina===paginaActual}" *ngFor="let numeropagina of listaPaginas">
+        <span class="page-link cursor-pointer" (click)="cambiaPagina(numeropagina)">{{numeropagina}}</span>
+      </li>
+      <li class="page-item" [ngClass]="{'disabled' : paginaActual>=ultimaPagina}" (click)="cambiaPagina(paginaActual + 1)">
+        <span class="page-link cursor-pointer">
+          <i class="fas fa-angle-right"></i>
+          <span class="sr-only">Next</span>
+        </span>
+      </li>
+      <li class="page-item" [ngClass]="{'disabled' : paginaActual>=ultimaPagina}" (click)="cambiaPagina(ultimaPagina)">
+        <span class="page-link cursor-pointer">
+          <i class="fas fa-angle-double-right"></i>
+          <span class="sr-only">Next</span>
+        </span>
+      </li>
+    </ul>
+  </nav>
+</div>

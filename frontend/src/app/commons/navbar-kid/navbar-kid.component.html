@@ -1,0 +1,192 @@
+<nav id="navbar-main" class="navbar navbar-horizontal quicksand-font navbar-transparent navbar-main navbar-expand-lg navbar-light p-0 p-lg-1">
+    <div class="container">
+        <div class="d-flex align-items-center position-relative">
+            <a class="navbar-brand pl-3 pl-lg-0 logo-letras">
+                <img class="img-fluid" src="../../../assets/img/brand/logo_letras_circulo_blanco.png" alt="Logo NutriUs">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+
+            <div class="navbar-collapse-header">
+                <div class="row align-items-center">
+                    <div class="col-5 collapse-brand">
+                        <a>
+                            <img class="img-fluid" src="../../../assets/img/brand/logo_letras_oscuro.png" alt="Logo NutriUs">
+                        </a>
+                    </div>
+                    <div class="col-2">
+                        <div class="py-1 text-center puntos-mov d-flex justify-content-center align-items-center">
+                            {{puntuacion}} <i class="ml-1 fas fa-circle" style="color: var(--primario)"></i>
+                        </div>
+                    </div>
+                    <div class="col-5 collapse-close">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                      </button>
+                    </div>
+                </div>
+            </div>
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item puntos d-none d-lg-block">
+                    {{puntuacion}} <i class="fas fa-circle" style="color: var(--primario)"></i>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                    <button class="btn mx-2" (click)="mostrarRecompensas(recompensasTemplate)" style="background-color: #efefef;"><i class="fas fa-medal" style="color: var(--primario)"></i> Recompensas</button>
+                </li>
+                <li class="nav-item dropdown d-none d-lg-block" *ngIf="tienePinParental">
+                    <a (click)="salir(template)" class="btn" style="background-color: #005e4c; color: #fff">Salir</a>
+                </li>
+                <li class="nav-item dropdown d-none d-lg-block" *ngIf="!tienePinParental">
+                    <a [routerLink]="['/inicio']" class="btn" style="background-color: #005e4c; color: #fff">Salir</a>
+                </li>
+                <li class="nav-item  d-lg-none">
+                    <button class="nav-link recompensas">
+                  <i class="fas fa-medal mr-2"></i>
+                  <span>Recompensas</span>
+                </button>
+                </li>
+                <li class="nav-item d-lg-none" *ngIf="tienePinParental">
+                    <a (click)="salir(template)" class="nav-link" style="cursor: pointer;">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span>Salir</span>
+                    </a>
+                </li>
+                <li class="nav-item d-lg-none" *ngIf="!tienePinParental">
+                    <a [routerLink]="['/inicio']" class="nav-link" style="cursor: pointer;">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        <span>Salir</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<ng-template #template>
+  <div class="card mb-0 quicksand-font">
+    <div class="form-section" style="border-radius: .375rem;">
+      <div class="form-content">
+        <form [formGroup]="dataForm">
+          <div class="row align-items-center">
+            <div class="form-group col-12">
+              <label for="pin_parental" class="col-form-label">Introduce el Pin Parental para salir</label>
+              <div [ngClass]="{'div-incorrecto-login': !campoValido('pin_parental')}">
+                  <input type="password" autofocus="true" class="form-control" formControlName="pin_parental" id="pin_parental" placeholder="" [ngClass]="{'campo-incorrecto-login': !campoValido('pin_parental')}" (keyup.enter)="comprobarPinParental()">
+              </div>
+              <div class="text-danger font-italic mt-3 col" *ngIf="!campoValido('pin_parental')">
+                <p class="small">* El pin parental es obligatorio</p>
+              </div>
+              <div *ngIf="pinIncorrecto" class="text-danger font-italic mt-3 col">
+                <p class="small">* El pin parental no es correcto</p>
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+            <button type="button" class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+            <button type="submit" class="btn btn-primario" (click)="comprobarPinParental()">Salir</button>
+          </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #recompensasTemplate>
+    <div class="quicksand-font" style="cursor: default;">
+        <div class="row">
+            <div class="col">
+                <!-- Datatable -->
+                <div class="card mb-0">
+                    <!-- Card header -->
+                    <div class="card-header position-relative d-flex py-3 px-5 justify-content-between align-items-center flex-wrap">
+                        <h3 class="mb-0">Recompensas</h3>
+                        <button class="" style="outline: none; border: 0; background-color: #fff;" (click)="modalRef.hide()">
+                      <i class="fas fa-times"></i>
+                    </button>
+                    </div>
+
+                    <div class="container-fluid my-4">
+                        <ul class="nav nav-tabs" id="kidrec" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="disponibles-tab" data-toggle="tab" href="#disponibles" (click)="cargarRecompensas(false);" role="tab" aria-controls="disponibles" aria-selected="true">Disponibles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="compradas-tab" data-toggle="tab" href="#compradas" (click)="cargarRecompensas(true);" role="tab" aria-controls="compradas" aria-selected="false">Compradas</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="kidrecContent">
+                            <!-- Contenido Disponibles-->
+                            <div class="tab-pane fade show active" id="disponibles" role="tabpanel" aria-labelledby="disponibles-tab">
+
+                                <div class="table-responsive py-4">
+                                    <table class="table table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Recompensa</th>
+                                                <th>Puntos</th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="medium-font">
+                                            <tr *ngFor="let recompensa of listaRecompensas" class="fondo-claro">
+                                                <td style="vertical-align:middle;">
+                                                    <p>{{recompensa.nombre}}</p>
+                                                </td>
+                                                <td style="vertical-align:middle;">
+                                                    <p>{{recompensa.puntos}} <i class="fas fa-circle"></i></p>
+                                                </td>
+                                                <td class="prog-cont" style="vertical-align:middle;">
+                                                    <progress *ngIf="recompensa.canjeable" class="rec-prog completo" value={{perfil.puntos_ganados}} max={{recompensa.puntos}}></progress>
+                                                    <progress *ngIf="!recompensa.canjeable" class="rec-prog incompleto" value={{perfil.puntos_ganados}} max={{recompensa.puntos}}></progress>
+                                                    <p *ngIf="!recompensa.canjeable">¡Te faltan {{recompensa.puntos - perfil.puntos_ganados}} puntos!</p>
+                                                </td>
+                                                <td style="vertical-align:middle;">
+                                                    <p *ngIf="!recompensa.canjeable">Completa {{recompensa.dias || 0}} días y consigue la recompensa</p>
+                                                    <p *ngIf="recompensa.canjeable">¡Ya puedes comprar esta recompensa!</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <!-- Contenido Compradas -->
+                            <div class="tab-pane fade" id="compradas" role="tabpanel" aria-labelledby="compradas-tab">
+                                <div class="table-responsive py-4">
+                                    <table class="table table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Recompensa</th>
+                                                <th>Puntos</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let recompensa of listaRecompensas" class="fondo-claro">
+                                                <td style="vertical-align:middle;">
+                                                    <p>{{recompensa.nombre}}</p>
+                                                </td>
+                                                <td style="vertical-align:middle;">
+                                                    <p>{{recompensa.puntos}} <i class="fas fa-circle"></i></p>
+                                                </td>
+                                                <td class="prog-cont" style="vertical-align:middle;">
+                                                    <p>¡Conseguida!</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

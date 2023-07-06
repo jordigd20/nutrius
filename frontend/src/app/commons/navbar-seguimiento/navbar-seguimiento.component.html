@@ -1,0 +1,12 @@
+<div class="quicksand-font" style="background-color: var(--fondo-claro);">
+    <div class="d-flex py-3 px-5 justify-content-between align-items-center flex-wrap" style="background-color: white;">
+        <h3 class="mb-0" style="font-size: 1.2rem;">Seguimiento de {{nombrePerfil}}</h3>
+        <a [routerLink]="'/inicio/'" class="btn btn-crear">Volver</a>
+    </div>
+
+    <div class="nav-seguimiento">
+        <a [routerLink]="['/inicio/seg-resumen', idPerfil]" [ngClass]="(paginaId==1)?'text-dark activo':'text-dark'">Resumen</a>
+        <a [routerLink]="['/inicio/seg-comidas', idPerfil]" [ngClass]="(paginaId==2)?'text-dark activo':'text-dark'">Comidas</a>
+        <a [routerLink]="['/inicio/seg-peso-altura', idPerfil]" [ngClass]="(paginaId==3)?'text-dark activo':'text-dark'">Peso y altura</a>
+    </div>
+</div>

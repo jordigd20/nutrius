@@ -1,0 +1,179 @@
+<!-- Page content -->
+<div class="card-header d-flex justify-content-between quicksand-font" style="background-color: #fafafa;">
+    <h3 class="mb-0" style="font-size: 1.2rem;">Premium</h3>
+    <a routerLink="/inicio/usuario" class="btn btn-crear">Volver</a>
+</div>
+
+<div class="premium-container pb-2 quicksand-font">
+    <form>
+        <div class="mb-4">
+            <section class="m-0" *ngIf="totalPlanes > 0">
+              <div class="mx-3 w-lg-100 historial-fact">
+                <h3 class="titulo-planes pt-3 pb-1">Historial de Facturación</h3>
+                <div class="table-responsive">
+                    <table class="mb-0 table table-flush text-center" id="datatable-basic">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Plan premium</th>
+                                <th>Método de Pago</th>
+                                <th>Fecha de compra</th>
+                                <th>Siguiente pago</th>
+                                <th>Subscripción Activa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let plan of listaPlanes; let planin=index">
+                                <td>{{plan.plan}}</td>
+                                <td *ngIf="plan.metodo_pago">{{plan.metodo_pago == 1 ? 'Tarjeta de crédito' : 'Paypal'}}</td>
+                                <td>{{fechasFact[planin]}}</td>
+                                <td>{{fechasFinFact[planin]}}</td>
+                                <td *ngIf="plan.activo==true">Sí</td>
+                                <td *ngIf="plan.activo==false">No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                  <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [totalRegistros]="totalPlanes" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+              </div>
+            </section>
+            <section class="m-0 lista-planes" id="premium-planes">
+                <h3 class="mx-3 titulo-planes" [ngClass]="{'pt-3': !esPremium}">Elige tu plan premium</h3>
+                <div class="card-row">
+                    <div class="card-column">
+                        <div class="card-select">
+                            <div class="card-divider" [ngClass]="{'pactive2': !esPremium && !planSeleccionado}">
+                              <p class="titulo">Gratis</p>
+                            </div>
+                            <div class="card-section" [ngClass]="{'pactive2': !esPremium && !planSeleccionado}">
+                              <p class="mb-0"></p>
+                              <div class="d-flex align-items-center">
+                                <h5 class="mr-1">0€</h5>
+                              </div>
+                              <ul class="lista-ventajas">
+                                  <li><i class="fas fa-check text-success mr-2"></i>Menús exclusivos</li>
+                                  <li><i class="fas fa-times mr-2"></i>Personalización de menús</li>
+                                  <li><i class="fas fa-times mr-2"></i>Sin publicidad</li>
+                               </ul>
+                            </div><div class="plan-footer" [ngClass]="{'pactive2': !esPremium && !planSeleccionado}">
+                              <button *ngIf="!esPremium && !planSeleccionado" (click)="mostrarTextoPlanActual[0] = !mostrarTextoPlanActual[0]" class="but-card pactive">Plan actual</button>
+                              <button *ngIf="!esPremium && planSeleccionado" class="but-card" (click)="planSeleccionado = false; planId = 0;">Seleccionar plan</button>
+                              <button *ngIf="esPremium" (click)="mostrarErrorPlanes[0] = !mostrarErrorPlanes[0]" class="but-card">Seleccionar plan</button>
+                            </div>
+                            <p *ngIf="!esPremium && !planSeleccionado && mostrarTextoPlanActual[0]" class="text-success text-center mb-0">Este es tu plan activo actualmente.</p>
+                            <p *ngIf="esPremium && mostrarErrorPlanes[0]" class="text-danger text-center mb-0">Si desesas volver al plan gratuito debes cancelar tu subscripción.</p>
+                        </div>
+                    </div>
+                    <div class="card-column">
+                        <div class="card-select">
+                            <div class="card-divider" [ngClass]="{'pactive2': planId === 1}">
+                              <p class="titulo">1 mes</p>
+                            </div>
+                            <div class="card-section" [ngClass]="{'pactive2': planId === 1}">
+                               <div class="d-flex align-items-center">
+                                 <h5 class="mr-1">3,99€</h5>
+                                 <p class="mb-0">/mes</p>
+                               </div>
+                               <ul class="lista-ventajas">
+                                <li><i class="fas fa-check mr-2"></i>Menús exclusivos</li>
+                                <li><i class="fas fa-check mr-2"></i>Personalización de menús</li>
+                                <li><i class="fas fa-check mr-2"></i>Sin publicidad</li>
+                               </ul>
+                            </div><div class="plan-footer" [ngClass]="{'pactive2': planId === 1}">
+                              <button *ngIf="planId === 1" (click)="mostrarTextoPlanActual[1] = !mostrarTextoPlanActual[1]" class="but-card pactive">Plan actual</button>
+                              <button *ngIf="planId !== 1 && esPremium" (click)="mostrarErrorPlanes[1] = !mostrarErrorPlanes[1]" class="but-card">Seleccionar plan</button>
+                              <a *ngIf="planId !== 1 && !esPremium" class="but-card" routerLink="/inicio/facturacion/1">Seleccionar plan</a>
+                            </div>
+                            <p *ngIf="planId === 1 && esPremium && mostrarTextoPlanActual[1]" class="text-success text-center mb-0">Este es tu plan activo actualmente.</p>
+                            <p *ngIf="planId !== 1 && esPremium && mostrarErrorPlanes[1]" class="text-danger text-center mb-0">No es posible tener más de 1 plan activo al mismo tiempo.</p>
+                        </div>
+                    </div>
+                    <div class="card-column">
+                        <div class="card-select">
+                            <div class="card-divider pb-0" [ngClass]="{'pactive2': planId === 2}">
+                              <p class="titulo">3 meses</p>
+                                <p class="mb-0">Ahorra 11,92€</p>
+                            </div>
+                            <div class="card-section pt-1" [ngClass]="{'pactive2': planId === 2}">
+                               <div class="d-flex align-items-center">
+                                 <h5 class="mr-1">8,99€</h5>
+                                 <p class="mb-0">/cada 3 meses</p>
+                               </div>
+                               <ul class="lista-ventajas">
+                                <li><i class="fas fa-check mr-2"></i>Menús exclusivos</li>
+                                <li><i class="fas fa-check mr-2"></i>Personalización de menús</li>
+                                <li><i class="fas fa-check mr-2"></i>Sin publicidad</li>
+                               </ul>
+                            </div><div class="plan-footer" [ngClass]="{'pactive2': planId === 2}">
+                              <button *ngIf="planId === 2" (click)="mostrarTextoPlanActual[2] = !mostrarTextoPlanActual[2]" class="but-card pactive">Plan actual</button>
+                              <button *ngIf="planId !== 2 && esPremium" (click)="mostrarErrorPlanes[2] = !mostrarErrorPlanes[2]" class="but-card">Seleccionar plan</button>
+                              <a *ngIf="planId !== 2 && !esPremium" class="but-card" routerLink="/inicio/facturacion/2">Seleccionar plan</a>
+                            </div>
+                            <p *ngIf="planId === 2 && esPremium && mostrarTextoPlanActual[2]" class="text-success text-center mb-0">Este es tu plan activo actualmente.</p>
+                            <p *ngIf="planId !== 2  && esPremium && mostrarErrorPlanes[2]" class="text-danger text-center mb-0">No es posible tener más de 1 plan activo al mismo tiempo.</p>
+                        </div>
+                    </div>
+                    <div class="card-column">
+                        <div class="card-select">
+                            <div class="card-divider pb-1" [ngClass]="{'pactive2': planId === 3}">
+                                <p class="titulo">6 meses</p>
+                                <p class="mb-0">Ahorra 21,90€</p>
+                            </div>
+                            <div class="card-section pt-0" [ngClass]="{'pactive2': planId === 3}">
+                               <div class="d-flex align-items-center">
+                                 <h5 class="mr-1">12,99€</h5>
+                                 <p class="mb-0">/cada 6 meses</p>
+                               </div>
+                               <ul class="lista-ventajas">
+                                <li><i class="fas fa-check mr-2"></i>Menús exclusivos</li>
+                                <li><i class="fas fa-check mr-2"></i>Personalización de menús</li>
+                                <li><i class="fas fa-check mr-2"></i>Sin publicidad</li>
+                               </ul>
+                            </div>
+                            <div class="plan-footer" [ngClass]="{'pactive2': planId === 3}">
+                              <button *ngIf="planId === 3" (click)="mostrarTextoPlanActual[3] = !mostrarTextoPlanActual[3]" class="but-card pactive">Plan actual</button>
+                              <button *ngIf="planId !== 3 && esPremium" (click)="mostrarErrorPlanes[3] = !mostrarErrorPlanes[3]" class="but-card">Seleccionar plan</button>
+                              <a *ngIf="planId !== 3 && !esPremium" class="but-card" routerLink="/inicio/facturacion/3">Seleccionar plan</a>
+                            </div>
+                            <p *ngIf="planId === 3 && esPremium && mostrarTextoPlanActual[3]" class="text-success text-center mb-0">Este es tu plan activo actualmente.</p>
+                            <p *ngIf="planId !== 3 && esPremium && mostrarErrorPlanes[3]" class="text-danger text-center mb-0">No es posible tener más de 1 plan activo al mismo tiempo.</p>
+                        </div>
+                    </div>
+                    <div class="card-column">
+                        <div class="card-select">
+                            <div class="card-divider pb-1" [ngClass]="{'pactive2': planId === 4}">
+                              <p class="titulo">1 año</p>
+                                <p class="mb-0">Ahorra 28,89€</p>
+                            </div>
+                            <div class="card-section pt-0" [ngClass]="{'pactive2': planId === 4}">
+                               <div class="d-flex align-items-center">
+                                 <h5 class="mr-1">18,99€</h5>
+                                 <p class="mb-0">/cada 1 año</p>
+                               </div>
+                               <ul class="lista-ventajas">
+                                <li><i class="fas fa-check mr-2"></i>Menús exclusivos</li>
+                                <li><i class="fas fa-check mr-2"></i>Personalización de menús</li>
+                                <li><i class="fas fa-check mr-2"></i>Sin publicidad</li>
+                               </ul>
+                            </div>
+                            <div class="plan-footer" [ngClass]="{'pactive2': planId === 4}">
+                              <button *ngIf="planId === 4" (click)="mostrarTextoPlanActual[4] = !mostrarTextoPlanActual[4]" class="but-card pactive">Plan actual</button>
+                              <button *ngIf="planId !== 4 && esPremium" (click)="mostrarErrorPlanes[4] = !mostrarErrorPlanes[4];" class="but-card">Seleccionar plan</button>
+                              <a *ngIf="planId !== 4 && !esPremium" class="but-card" routerLink="/inicio/facturacion/4">Seleccionar plan</a>
+                            </div>
+                            <p *ngIf="planId === 4 && esPremium && mostrarTextoPlanActual[4]" class="text-success text-center mb-0">Este es tu plan activo actualmente.</p>
+                            <p *ngIf="planId !== 4 && esPremium && mostrarErrorPlanes[4]" class="text-danger text-center mb-0">No es posible tener más de 1 plan activo al mismo tiempo.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="mx-3 d-flex flex-wrap align-items-center" *ngIf="esPremium">
+              <p class="mb-0 my-1 pr-3" style="font-weight: 500;">* La subscripción se renueva automaticamente. Si lo deseas, puedes cancelar tu subscripción desde aquí.</p>
+              <button class="my-1 but-card pactive" style="flex: none;" (click)="cancelarPlanPrem()">Cancelar subscripción</button>
+            </div>
+        </div>
+
+    </form>
+
+  </div>
+  <app-footer></app-footer>

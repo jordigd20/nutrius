@@ -1,0 +1,187 @@
+<!-- Topnav -->
+<app-navbar-admin></app-navbar-admin>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid quicksand-font mt--6">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="mb-0" style="font-size: 1.2rem;">Seleccionar plato</h3>
+                    <button (click)="volver()" class="btn btn-crear">Volver</button>
+                </div>
+                <!-- Card dos platos -->
+                <div class="main-container m-0 row">
+                    <!-- Fin card dos platos -->
+                    <section class="col-12 col-lg-3 my-0 container-fluid filtros-buscador-platos">
+                        <div *ngIf="uidPlato!=='0'" class="my-3 plato-anterior-container">
+                            <div class="card card-stats maxWidthImg">
+
+                                <img *ngIf="exPlatoImagen" src="{{'../../../assets/img/platos/' + exPlatoImagen}}" class="card-img-top" alt="Plato a cambiar">
+                                <img *ngIf="!exPlatoImagen" src="../../../assets/img/platos/noimage.jpg" class="card-img-top" alt="Plato a cambiar">
+
+                                <div class="gradiente-card text-center" style="bottom: 59px; border-radius: 0;">
+                                    <div class="intolerancias-plato">
+                                        <img class="mx-1" *ngIf="exPlatoIntolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                        <img class="mx-1" *ngIf="exPlatoIntolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                        <img class="mx-1" *ngIf="exPlatoIntolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                        <img class="mx-1" *ngIf="exPlatoIntolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                        <img class="mx-1" *ngIf="exPlatoIntolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                        <img class="mx-1" *ngIf="exPlatoIntolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                        <img class="mx-1" *ngIf="exPlatoIntolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                    </div>
+                                    <p class="titulo-plato-card">{{exPlatoNombre}}</p>
+                                </div>
+                                <div class="card-body d-flex justify-content-center align-items-center">
+                                    <i class="fas fa-exchange-alt mx-1" style="font-size: 1.2rem; color: var(--primario);"></i>
+                                    <p class="mx-1 mb-0" style="font-weight: 600;">Plato a cambiar</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form [formGroup]="buscarForm" (ngSubmit)="cargarPlatos()">
+
+                            <h4 class="m-0 mt-4" style="font-size: 1.1rem;font-weight: 600;">Búsqueda de platos</h4>
+
+                            <div class="my-2">
+                                <div class="input-group col-12 w-100">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                    </div>
+                                    <input type="search" class="form-control" formControlName="texto" style="height: 95%;" placeholder="Plato a buscar" aria-label="Plato a buscar" aria-describedby="basic-addon1">
+                                </div>
+                            </div>
+
+                            <div class="my-3 radio-grupo">
+                                <div class="d-flex">
+                                    <h4 class="pb-1 border-bottom" style="width: 35rem;">Comida</h4>
+                                    <span (click)="resetComida()">
+                                    <i class="fas fa-times cursor-pointer"></i>
+                                  </span>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check form-check-inline medium-font">
+                                        <input class="form-check-input" type="checkbox" formControlName="desayuno" name="comidas" id="inlineRadio1" value="desayuno">
+                                        <label class="form-check-label" for="inlineRadio1">Desayuno</label>
+                                    </div>
+                                    <div class="form-check form-check-inline medium-font">
+                                        <input class="form-check-input" type="checkbox" formControlName="almuerzo" name="comidas" id="inlineRadio2" value="almuerzo">
+                                        <label class="form-check-label" for="inlineRadio2">Almuerzo</label>
+                                    </div>
+                                    <div class="form-check form-check-inline medium-font">
+                                        <input class="form-check-input" type="checkbox" formControlName="comida" name="comidas" id="inlineRadio3" value="comida">
+                                        <label class="form-check-label" for="inlineRadio3">Comida</label>
+                                    </div>
+                                    <div class="form-check form-check-inline medium-font">
+                                        <input class="form-check-input" type="checkbox" formControlName="merienda" name="comidas" id="inlineRadio4" value="merienda">
+                                        <label class="form-check-label" for="inlineRadio4">Merienda</label>
+                                    </div>
+                                    <div class="form-check form-check-inline medium-font">
+                                        <input class="form-check-input" type="checkbox" formControlName="cena" name="comidas" id="inlineRadio5" value="cena">
+                                        <label class="form-check-label" for="inlineRadio5">Cena</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-3 radio-grupo">
+                                <div class="d-flex">
+                                    <h4 class="pb-1 border-bottom" style="width: 35rem;">Intolerancias</h4>
+                                    <span (click)="resetIntolerancias()">
+                                    <i class="fas fa-times cursor-pointer"></i>
+                                  </span>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="gluten" name="intolerancias" id="intolerancia1" value="gluten">
+                                        <label class="form-check-label medium-font" for="intolerancia1">Gluten<img class="mx-1" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt=""></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="crustaceos" name="intolerancias" id="intolerancia2" value="crustaceos">
+                                        <label class="form-check-label medium-font" for="intolerancia2">Crustáceos<img class="mx-1" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt=""></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="huevos" name="intolerancias" id="intolerancia3" value="huevos">
+                                        <label class="form-check-label medium-font" for="intolerancia3">Huevos<img class="mx-1" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt=""></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="pescado" name="intolerancias" id="intolerancia4" value="pescado">
+                                        <label class="form-check-label medium-font" for="intolerancia4">Pescado<img class="mx-1" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt=""></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="cacahuetes" name="intolerancias" id="intolerancia5" value="cacahuetes">
+                                        <label class="form-check-label medium-font" for="intolerancia5">Cacahuetes<img class="mx-1" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt=""></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="lacteos" name="intolerancias" id="intolerancia7" value="lacteos">
+                                        <label class="form-check-label medium-font" for="intolerancia7">Lácteos<img class="mx-1" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt=""></label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" formControlName="moluscos" name="intolerancias" id="intolerancia9" value="moluscos">
+                                        <label class="form-check-label medium-font" for="intolerancia9">Moluscos<img class="mx-1" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt=""></label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </section>
+
+                    <!-- Resultados buscador -->
+                    <section class="col-12 col-lg-9 container-fluid m-0">
+                        <div class="mt-3 mx-3 d-flex flex-wrap justify-content-between align-items-center">
+                            <h4 class="mb-0" style="font-size: 1.1rem;">Resultados</h4>
+                        </div>
+
+                        <div class="alert bg-primario-claro text-center my-3 pt-4" *ngIf="loading">
+                            <h4 class="alert-heading">Cargando!</h4>
+                            <i class="fa fa-spin fa-spinner fa-3x"></i>
+                            <p>Por favor, espere</p>
+                        </div>
+
+                        <div class="grid-platos my-3" [@listAnimation]="listaPlatos">
+                            <div *ngFor="let plato of listaPlatos" class="card maxWidthImg" (mouseenter)="mostrarHoverPlato(plato.uid)" (mouseleave)="esconderHoverPlato(plato.uid)">
+
+                                <button class="container-cambiar-plato" [@popOverAnimation] (click)="guardarCambios(plato.uid)" *ngIf="getHoverPlato(plato.uid)" style="font-size: 1rem;">
+                                <ng-container *ngIf="uidPlato !== '0'">
+                                  <i class="fas fa-exchange-alt mx-1" style="font-size: 1.2rem; color: var(--primario);"></i><p class="mx-1 mb-0 titulo-plato" style="font-size: 1rem;">Cambiar plato</p>
+                                </ng-container>
+                                <ng-container *ngIf="uidPlato === '0'">
+                                  <i class="fas fa-plus mx-1"></i><p class="mx-1 titulo-plato" style="font-size: 1rem;">Añadir plato</p>
+                                </ng-container>
+                              </button>
+
+                                <img *ngIf="plato.imagen" src="{{'../../../assets/img/platos/' + plato.imagen}}" class="card-img-top" alt="{{plato.nombre}}">
+                                <img *ngIf="!plato.imagen" src="../../../assets/img/platos/noimage.jpg" class="card-img-top" alt="Sin imagen">
+
+                                <div class="gradiente-card">
+                                    <div class="intolerancias-plato" *ngIf="plato.intolerancias">
+                                        <img class="mx-1" *ngIf="plato.intolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                        <img class="mx-1" *ngIf="plato.intolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                        <img class="mx-1" *ngIf="plato.intolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                        <img class="mx-1" *ngIf="plato.intolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                        <img class="mx-1" *ngIf="plato.intolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                        <img class="mx-1" *ngIf="plato.intolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                        <img class="mx-1" *ngIf="plato.intolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                    </div>
+                                    <p class="titulo-plato-card">{{plato.nombre}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [texto]="true " [totalRegistros]="totalPlatos" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

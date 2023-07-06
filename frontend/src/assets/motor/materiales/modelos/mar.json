@@ -1,0 +1,336 @@
+{
+	 "__metadata__": {
+		 "format": "assimp2json"
+		,"version": 100
+	}
+	,"rootnode": {
+		 "name": "mar.obj"
+		,"transformation": [
+			 1
+			,0
+			,0
+			,0
+			,0
+			,1
+			,0
+			,0
+			,0
+			,0
+			,1
+			,0
+			,0
+			,0
+			,0
+			,1
+		]
+		,"children": [
+			{
+				 "name": "mar_Plane"
+				,"transformation": [
+					 1
+					,0
+					,0
+					,0
+					,0
+					,1
+					,0
+					,0
+					,0
+					,0
+					,1
+					,0
+					,0
+					,0
+					,0
+					,1
+				]
+				,"meshes": [
+					 0
+				]
+			}
+		]
+	}
+	,"flags": 0
+	,"meshes": [
+		{
+			 "name": "mar_Plane"
+			,"materialindex": 1
+			,"primitivetypes": 4
+			,"vertices": [
+				 35.5916
+				,-0.190777
+				,21.0601
+				,-35.5916
+				,-0.190777
+				,-7.38449
+				,-35.5916
+				,-0.190777
+				,21.0601
+				,35.5916
+				,-0.190777
+				,21.0601
+				,35.5916
+				,-0.190777
+				,-7.38449
+				,-35.5916
+				,-0.190777
+				,-7.38449
+			]
+			,"normals": [
+				 0
+				,1
+				,0
+				,0
+				,1
+				,0
+				,0
+				,1
+				,0
+				,0
+				,1
+				,0
+				,0
+				,1
+				,0
+				,0
+				,1
+				,0
+			]
+			,"numuvcomponents": [
+				 2
+			]
+			,"texturecoords": [
+				[
+					 1
+					,0
+					,0
+					,1
+					,0
+					,0
+					,1
+					,0
+					,1
+					,1
+					,0
+					,1
+				]
+			]
+			,"faces": [
+				[
+					 0
+					,1
+					,2
+				]
+				,[
+					 3
+					,4
+					,5
+				]
+			]
+		}
+	]
+	,"materials": [
+		{
+			 "properties": [
+				{
+					 "key": "?mat.name"
+					,"semantic": 0
+					,"index": 0
+					,"type": 3
+					,"value": "DefaultMaterial"
+				}
+				,{
+					 "key": "$mat.shadingm"
+					,"semantic": 0
+					,"index": 0
+					,"type": 4
+					,"value": 2
+				}
+				,{
+					 "key": "$clr.ambient"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$clr.diffuse"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0.6
+						,0.6
+						,0.6
+					]
+				}
+				,{
+					 "key": "$clr.specular"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$clr.emissive"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$mat.shininess"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 0
+				}
+				,{
+					 "key": "$mat.opacity"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1
+				}
+				,{
+					 "key": "$clr.transparent"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 1
+						,1
+						,1
+					]
+				}
+				,{
+					 "key": "$mat.refracti"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1
+				}
+			]
+		}
+		,{
+			 "properties": [
+				{
+					 "key": "?mat.name"
+					,"semantic": 0
+					,"index": 0
+					,"type": 3
+					,"value": "Material.003"
+				}
+				,{
+					 "key": "$mat.shadingm"
+					,"semantic": 0
+					,"index": 0
+					,"type": 4
+					,"value": 3
+				}
+				,{
+					 "key": "$clr.ambient"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 1
+						,1
+						,1
+					]
+				}
+				,{
+					 "key": "$clr.diffuse"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0.8
+						,0.8
+						,0.8
+					]
+				}
+				,{
+					 "key": "$clr.specular"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0.5
+						,0.5
+						,0.5
+					]
+				}
+				,{
+					 "key": "$clr.emissive"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 0
+						,0
+						,0
+					]
+				}
+				,{
+					 "key": "$mat.shininess"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 225
+				}
+				,{
+					 "key": "$mat.opacity"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1
+				}
+				,{
+					 "key": "$clr.transparent"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": [
+						 1
+						,1
+						,1
+					]
+				}
+				,{
+					 "key": "$mat.refracti"
+					,"semantic": 0
+					,"index": 0
+					,"type": 1
+					,"value": 1.45
+				}
+				,{
+					 "key": "$tex.file"
+					,"semantic": 1
+					,"index": 0
+					,"type": 3
+					,"value": "C:\\\\Users\\\\laura\\\\Desktop\\\\Laura\\\\cole\\\\universidad\\\\4 carrera\\\\2 cuatri\\\\tag\\\\img\\\\watter_effect3.jpg"
+				}
+				,{
+					 "key": "$tex.uvwsrc"
+					,"semantic": 1
+					,"index": 0
+					,"type": 4
+					,"value": 0
+				}
+			]
+		}
+	]
+}

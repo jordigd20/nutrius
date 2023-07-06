@@ -1,0 +1,40 @@
+<button class="btn btn-crear pdf quicksand-font" (click)="crearPDF()">{{textoBut}} <i class="fas fa-solid fa-file-pdf"></i></button>
+
+<div [hidden]="isHidden">
+    <div class="justify-content-center">
+        <img src="../../../assets/img/spinner.gif">
+    </div>
+    <div class="graficas-seguimiento-comidas mx-md-5">
+        <div class="p-3 w-100 bg-white">
+            <h3 class="py-2 ml-md-5 font-weight-bold">Platos más gustados</h3>
+            <canvas #grafica1=base-chart baseChart [data]="datosPlatosMasGustados" [type]="tipoGrafica" [options]="opcionesGrafica"></canvas>
+        </div>
+        <div class="p-3 w-100 bg-white">
+            <h3 class="py-2 ml-md-5 font-weight-bold">Platos menos gustados</h3>
+            <canvas #grafica2=base-chart baseChart [data]="datosPlatosMenosGustados" [type]="tipoGrafica" [options]="opcionesGrafica"></canvas>
+        </div>
+    </div>
+
+    <div class="grafica-suelta p-3 mt-3 mx-md-5 mx-lg-auto bg-white">
+        <h3 class="py-2 ml-md-5 font-weight-bold">Platos más fallados</h3>
+        <canvas #grafica3=base-chart baseChart [data]="datosPlatosMasFallados" [type]="tipoGrafica" [options]="opcionesGrafica"></canvas>
+    </div>
+    <div class="grafs">
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Percentiles de peso</h3>
+            <canvas id="chartPeso2">{{ chartPeso2 }}</canvas>
+        </div>
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Percentiles de altura</h3>
+            <canvas id="chartAltura2">{{ chartAltura2 }}</canvas>
+        </div>
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Transcurso del peso</h3>
+            <canvas id="transcPeso2">{{ transcPeso2 }}</canvas>
+        </div>
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Transcurso de la altura</h3>
+            <canvas id="transcAltura2">{{ transcAltura2 }}</canvas>
+        </div>
+    </div>
+</div>

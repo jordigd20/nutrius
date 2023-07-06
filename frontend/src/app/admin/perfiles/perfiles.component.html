@@ -1,0 +1,111 @@
+<!-- Topnav -->
+<app-navbar-admin></app-navbar-admin>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header position-relative">
+                    <button class="btn-link" routerLink="/admin/usuarios">
+                      <i class="fas fa-angle-left"></i> Volver
+                    </button>
+                    <h3 class="mb-0 absolute-center">{{usuParent}}</h3>
+                </div>
+
+                <div class="container-fluid my-4">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li *ngFor="let perfil of listaPerfiles" class="nav-item">
+                            <a *ngIf="perfil === listaPerfiles[0]" class="nav-link active" id="{{perfil.nombre}}-tab" data-toggle="tab" href="#{{perfil.nombre}}" role="tab" aria-selected="true">{{perfil.nombre}}</a>
+                            <a *ngIf="perfil !== listaPerfiles[0]" class="nav-link" id="{{perfil.nombre}}-tab" data-toggle="tab" href="#{{perfil.nombre}}" role="tab" aria-selected="false">{{perfil.nombre}}</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <ng-container *ngFor="let perfil of listaPerfiles; let cont=index">
+                            <div [ngClass]="(perfil === listaPerfiles[0])?'tab-pane fade show active':'tab-pane fade'" id="{{perfil.nombre}}" role="tabpanel">
+
+                                <div class="table-responsive py-4">
+                                    <table class="table table-flush" id="datatable-basic">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>Fecha de nacimiento</th>
+                                                <th>Sexo</th>
+                                                <th>Intolerancias</th>
+                                                <th>Objetivo</th>
+                                                <th>Activo</th>
+                                                <th>Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr class="fondo-claro">
+                                                <td class="vertical-align-middle">{{fechPerfiles[cont]}}</td>
+                                                <td class="vertical-align-middle">{{perfil.sexo}}</td>
+                                                <td class="vertical-align-middle">
+                                                    <img *ngIf="perfil.intolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                                    <img *ngIf="perfil.intolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                                    <img *ngIf="perfil.intolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                                    <img *ngIf="perfil.intolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                                    <img *ngIf="perfil.intolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                                    <img *ngIf="perfil.intolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                                    <img *ngIf="perfil.intolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                                </td>
+                                                <td class="vertical-align-middle">
+                                                    {{perfil.objetivo}}
+                                                </td>
+                                                <td class="vertical-align-middle">
+                                                    <i *ngIf="perfil.activo === true" class="fas fa-check text-green"></i>
+                                                    <i *ngIf="perfil.activo === false" class="fas fa-times text-danger"></i>
+                                                </td>
+                                                <td class="vertical-align-middle">
+                                                    <button class="btn btn-gris" [disabled]="listaPerfiles[cont].eliminando" (click)="borrarPerfil(perfil.uid, perfil.nombre, cont)">
+                                                  <i [ngClass]="listaPerfiles[cont].eliminando ? 'fa fa-spinner fa-spin' : 'fas fa-trash-alt'" class="mr-2"></i>
+                                                  Eliminar
+                                                </button>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="grafs">
+                                    <div>
+                                        <h3 class="pt-4 pb-1 font-weight-bold">Transcurso del peso</h3>
+                                        <canvas id="{{ 'transcPeso' + cont }}">{{ transcPeso[cont] }}</canvas>
+                                    </div>
+                                    <div>
+                                        <h3 class="pt-4 pb-1 font-weight-bold">Transcurso de la altura</h3>
+                                        <canvas id="{{ 'transcAltura' + cont }}">{{ transcAltura[cont] }}</canvas>
+                                    </div>
+                                    <div>
+                                        <h3 class="pt-4 pb-1 font-weight-bold">Percentiles de peso</h3>
+                                        <canvas id="{{ 'chartPeso' + cont }}">{{ chartPeso[cont] }}</canvas>
+                                    </div>
+                                    <div>
+                                        <h3 class="pt-4 pb-1 font-weight-bold">Percentiles de altura</h3>
+                                        <canvas id="{{ 'chartAltura' + cont }}">{{ chartAltura[cont] }}</canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</div>

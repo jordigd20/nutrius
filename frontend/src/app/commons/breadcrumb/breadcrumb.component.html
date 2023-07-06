@@ -1,0 +1,19 @@
+<h6 class="h2 text-white d-inline-block mb-0">{{titulo}}</h6>
+<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+    <ol class="breadcrumb breadcrumb-links breadcrumb-dark" style="margin-bottom: 0!important">
+        <li class="breadcrumb-item">
+            <button class="btn-link" routerLink="/admin/inicio">
+              <i class="fas fa-home"></i>
+            </button>
+        </li>
+        <li class="breadcrumb-item" *ngFor="let ruta of breadcrumbs">
+            <button *ngIf="(uidMenu==='') || (titulo!=='Seleccionar plato')" class="btn-link" routerLink="{{ruta.ruta}}">
+            {{ruta.titulo}}
+          </button>
+            <button *ngIf="(uidMenu!=='') && (titulo==='Seleccionar plato')" [routerLink]="['/admin/menus/editar-menu', uidMenu]" class="btn-link">
+            {{ruta.titulo}}
+          </button>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">{{titulo}}</li>
+    </ol>
+</nav>

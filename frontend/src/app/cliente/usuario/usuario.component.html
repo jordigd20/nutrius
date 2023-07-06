@@ -1,0 +1,351 @@
+<!-- Page content -->
+<div class="fact quicksand-font container-fluid mb-3 p-4">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">{{nombreUsuario}}</h3>
+                    <a [routerLink]="'/inicio/'" class="btn btn-crear">Volver</a>
+                </div>
+
+                <div [ngClass]="(premium==true)?'usuario-grid':'usuario2-grid'">
+                    <div class="form-section" id="usuario-personales">
+                        <h3 class="p-3 pl-4 text-center">Datos personales</h3>
+                        <div class="form-content px-5">
+                            <form [formGroup]="dataForm" (ngSubmit)="actualizarDatosPersonales()">
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12">
+                                        <label for="nombre_usuario" class="col-form-label">Usuario *</label>
+                                        <div>
+                                            <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('nombre_usuario', 'personal')}" formControlName="nombre_usuario" id="nombre_usuario" value={{nombreUsuario}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('nombre_usuario', 'personal')">* El nombre de usuario es obligatorio</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12">
+                                        <label for="email" class="col-form-label">Email *</label>
+                                        <div>
+                                            <input type="email" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('email', 'personal')}" formControlName="email" id="email" value={{emailUsuario}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('email', 'personal')">* El email es obligatorio</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-sm-between flex-wrap">
+                                    <div>
+                                        <button type="button" class="mt-2 btn btn-crear" (click)="openModal(changePassword)">Cambiar contraseña</button>
+                                        <button type="button" class="mt-2 btn btn-crear" (click)="openModal(changePin)">Pin Parental</button>
+                                        <button type="button" class="mt-2 btn btn-gris" (click)="darsedebaja()">Darse de baja</button>
+                                    </div>
+
+                                    <button type="submit" [disabled]="waitingPersonales" class="mt-2 btn btn-primario">
+                              <i class="fa fa-spinner fa-spin mr-2"*ngIf="waitingPersonales"></i>
+                              Guardar
+                            </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="usuario-premium">
+                        <h3 class="p-3 pl-4 text-center">Premium</h3>
+                        <div class="form-content mt-5  d-flex flex-column align-items-center ">
+                            <p>{{textoPremium}}</p>
+                            <h3>{{fechahastaPremium}}</h3>
+                            <div class="boton-premium">
+                                <a [routerLink]="['/inicio/premium']" class="btn btn-primario">Configurar Plan Premium</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="premium==true" class="form-section" id="usuario-facturacion">
+                        <h3 class="p-3 pl-4 text-center">Datos de Facturación</h3>
+                        <div class="form-content px-5">
+                            <form [formGroup]="facturaForm" (ngSubmit)="actualizarFactura()">
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="nombre" class="col-form-label">Nombre *</label>
+                                        <div>
+                                            <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('nombre', 'factura')}" formControlName="nombre" id="nombre" value={{nombreFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('nombre', 'factura')">* El nombre es obligatorio</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="apellidos" class="col-form-label">Apellidos *</label>
+                                        <div>
+                                            <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('apellidos', 'factura')}" formControlName="apellidos" id="apellidos" value={{apellidosFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('apellidos', 'factura')">* Los apellidos son obligatorios</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="fecha_nacimiento" class="col-form-label">Fecha de Nacimiento *</label>
+                                        <div>
+                                            <input type="date" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('fecha_nacimiento', 'factura')}" formControlName="fecha_nacimiento" id="fecha_nacimiento" value={{fecha_nacimientoFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('fecha_nacimiento', 'factura')">* La fecha de nacimiento es obligatoria</p>
+                                            <p class="small font-italic text-danger" *ngIf="!validarFecha()">Debe ser una fecha válida</p>
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="dni" class="col-form-label">DNI / NIE *</label>
+                                        <div>
+                                            <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('dni', 'factura')}" formControlName="dni" id="dni" value={{dniFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('dni', 'factura')">* El DNI/NIE es obligatorio</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="movil" class="col-form-label">Móvil *</label>
+                                        <div>
+                                            <input type="tel" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('movil', 'factura')}" formControlName="movil" id="movil" value={{movilFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('movil', 'factura')">* El móvil es obligatorio</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="direccion" class="col-form-label">Dirección *</label>
+                                        <div>
+                                            <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('direccion', 'factura')}" formControlName="direccion" id="direccion" value={{direccionFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('direccion', 'factura')">* La dirección es obligatoria</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="piso" class="col-form-label">Piso y Puerta</label>
+                                        <div>
+                                            <input type="text" class="form-control" formControlName="piso" id="piso" value={{pisoFactura}}>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="codigo_postal" class="col-form-label">Código Postal *</label>
+                                        <div>
+                                            <input type="number" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('codigo_postal', 'factura')}" formControlName="codigo_postal" id="codigo_postal" value={{cpFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('codigo_postal', 'factura')">* El código postal es obligatorio</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="provincia" class="col-form-label">Provincia *</label>
+                                        <div>
+                                            <input list="lista-provincias" (focus)="cargarListaProvincias()" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('provincia', 'factura')}" formControlName="provincia" id="provincia">
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('provincia', 'factura')">* La provincia es obligatoria</p>
+                                            <datalist id="lista-provincias">
+                                    <option *ngFor="let provincia of listaProvincias" value="{{provincia}}"></option>
+                                  </datalist>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="poblacion" class="col-form-label">Población *</label>
+                                        <div>
+                                            <input type="text" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('poblacion', 'factura')}" formControlName="poblacion" id="poblacion" value={{poblacionFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('poblacion', 'factura')">* La población es obligatoria</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6">
+                                        <label for="pais" class="col-form-label">País *</label>
+                                        <div>
+                                            <input list="lista-paises" (focus)="cargarListaPaises()" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('pais', 'factura')}" formControlName="pais" id="pais" value={{paisFactura}}>
+                                            <p class="small font-italic text-danger" *ngIf="!campoValido('pais', 'factura')">* El país es obligatorio</p>
+                                            <datalist id="lista-paises">
+                                        <option *ngFor="let pais of listaPaises" value="{{pais}}"></option>
+                                    </datalist>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="ft-botones">
+                                    <button type="submit" class="btn btn-primario" [disabled]="waitingFacturacion">
+                                  <i class="fa fa-spinner fa-spin mr-2"*ngIf="waitingFacturacion"></i>
+                                  Guardar
+                                </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Perfil Grid -->
+
+                <ng-template #changePassword>
+                    <div class="row">
+                        <div class="col">
+                            <!-- Datatable -->
+                            <div class="card mb-0">
+                                <!-- Card header -->
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h3 class="mb-0">Cambiar contraseña</h3>
+                                </div>
+                                <div class="form-section" id="cambiar-password" style="border-radius: .375rem;">
+                                    <div class="form-content quicksand-font">
+                                        <form [formGroup]="pswForm" class="mx-3">
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="password" class="col-form-label">Contraseña actual *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('password', 'password')}" formControlName="password" id="password">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('password', 'password')">* La contraseña actual es obligatoria</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="nuevopassword" class="col-form-label">Contraseña nueva *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('nuevopassword', 'password')}" formControlName="nuevopassword" id="nuevopassword">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('nuevopassword', 'password')">* La contraseña nueva es obligatoria</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="nuevopassword2" class="col-form-label">Repetir contraseña *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('nuevopassword2', 'password')}" formControlName="nuevopassword2" id="nuevopassword2">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('nuevopassword2', 'password')">* La contraseña repetida es obligatoria</p>
+                                                        <p class="small font-italic text-danger" *ngIf="!checarSiSonIguales()">Las contraseñas no coinciden</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+                                                <button type="submit" class="btn btn-primario" [disabled]="waitingPassword" (click)="actualizarPsw()">
+                                                  <i class="fa fa-spinner fa-spin mr-2"*ngIf="waitingPassword"></i> Cambiar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template #changePin>
+                    <div class="row">
+                        <div class="col">
+                            <!-- Datatable -->
+                            <div class="card mb-0" *ngIf="!tienePinParental">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h3 class="mb-0">Crear pin parental</h3>
+                                </div>
+                                <div class="form-section" id="cambiar-password" style="border-radius: .375rem;">
+                                    <div class="form-content quicksand-font">
+                                        <form [formGroup]="crearPinForm" class="mx-3">
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="pin_parental" class="col-form-label">Pin parental *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('pin_parental', 'crearpin_parental')}" formControlName="pin_parental" id="pin_parental">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('pin_parental', 'crearpin_parental')">* El pin es obligatorio</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="repetirpinparental" class="col-form-label">Repetir pin parental *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('repetirpinparental', 'crearpin_parental')}" formControlName="repetirpinparental" id="repetirpinparental">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('repetirpinparental', 'crearpin_parental')">* No coinciden</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+                                                <button type="submit" class="btn btn-primario" [disabled]="waitingCrearPinParental" (click)="crearPinParental()">
+                                    <i class="fa fa-spinner fa-spin mr-2"*ngIf="waitingCrearPinParental"></i>
+                                    Crear
+                                  </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="card" *ngIf="tienePinParental">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h3 class="mb-0">Cambiar pin parental</h3>
+                                </div>
+                                <div class="form-section" id="cambiar-password">
+                                    <div class="form-content quicksand-font">
+                                        <form [formGroup]="pinForm" class="mx-3">
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="pin_parental" class="col-form-label">Pin actual *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('pin_parental', 'pin_parental')}" formControlName="pin_parental" id="pin_parental">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('pin_parental', 'pin_parental')">* El pin actual es obligatorio</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="nuevopinparental" class="col-form-label">Pin nuevo *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('nuevopinparental', 'pin_parental')}" formControlName="nuevopinparental" id="nuevopinparental">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('nuevopinparental', 'pin_parental')">* El pin nuevo es obligatorio</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row align-items-center">
+                                                <div class="form-group col-12">
+                                                    <label for="nuevopinparental2" class="col-form-label">Repetir pin *</label>
+                                                    <div>
+                                                        <input type="password" class="form-control" [ngClass]="{'campo-incorrecto': !campoValido('nuevopinparental2', 'pin_parental')}" formControlName="nuevopinparental2" id="nuevopinparental2">
+                                                        <p class="small font-italic text-danger" *ngIf="!campoValido('nuevopinparental2', 'pin_parental')">* La contraseña repetida es obligatoria</p>
+                                                        <p class="small font-italic text-danger" *ngIf="!checarSiSonIguales()">El pin repetido no coincide</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-right">
+                                                <button type="button" class="btn btn-red" (click)="eliminarPinParental()">Eliminar</button>
+                                                <button type="button" class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+                                                <button type="submit" class="btn btn-primario" [disabled]="waitingPinParental" (click)="actualizarPin()">
+                                  <i class="fa fa-spinner fa-spin mr-2"*ngIf="waitingPinParental"></i>
+                                  Cambiar
+                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

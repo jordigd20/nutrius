@@ -1,0 +1,97 @@
+<app-navbar-seguimiento></app-navbar-seguimiento>
+
+<app-printpdf [id]="idPerfil"></app-printpdf>
+
+<div class="container-fluid quicksand-font" style="background-color: var(--fondo-claro);">
+    <div class="contenedor-tabla-resumen">
+        <div class="d-flex align-items-center flex-wrap justify-content-center justify-content-md-start">
+            <h3 class="pt-4 pb-2 pb-md-4 ml-5 font-weight-bold">Registros del peso y la altura</h3>
+            <button class="btn btn-primario ml-3" (click)="openModal(template)"><i class="fas fa-plus mr-1"></i> Registrar</button>
+        </div>
+
+        <ng-template #template>
+          <div class="row quicksand-font">
+            <div class="col">
+              <div class="card mb-0">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h4 class="modal-title pull-left">Registrar peso y altura</h4>
+                </div>
+              </div>
+
+              <div class="form-section" style="border-radius: .375rem;">
+                <div class="form-content pt-4 pb-0">
+                  <form [formGroup]="dataForm">
+                    <div class="form-group align-items-center form-groupCrearPlato">
+                        <label for="peso" class="col-sm-6 col-form-label">Peso en kg</label><br>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" formControlName="peso" id="peso" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group align-items-center form-groupCrearPlato">
+                        <label for="altura" class="col-sm-6 col-form-label">Altura en cm</label><br>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" formControlName="altura" id="altura" placeholder="">
+                        </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div class="modal-footer text-right">
+                <button class="btn btn-gris" aria-label="Close" (click)="modalRef.hide()">Cancelar</button>
+                <button class="btn btn-primario" (click)="registrarPesoAltura()">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <div class="px-md-5 table-responsive pb-2">
+            <table class="table table-flush text-center tabla-pesos">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Peso</th>
+                        <th>Altura</th>
+                        <th>Variación</th>
+                        <th *ngIf="mostrarDif">Dif. con objetivo</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr *ngFor="let seguimiento of listaSeguimiento; let segin=index">
+                        <td>{{fechasSeg[segin]}}</td>
+                        <td>{{seguimiento.peso}} kg</td>
+                        <td>{{seguimiento.altura}} cm</td>
+                        <td><i *ngIf="seguimiento.variacion<0" class="fas fa-caret-down mr-1"></i><i *ngIf="seguimiento.variacion>0" class="fas fa-caret-up mr-1"></i><i *ngIf="seguimiento.variacion==0" class="fas fa-solid fa-equals mr-1"></i> {{seguimiento.variacion}}
+                            kg
+                        </td>
+                        <td *ngIf="seguimiento.difObjetivo">{{seguimiento.difObjetivo}} kg</td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [totalRegistros]="totalSeguimiento" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+        </div>
+        <!-- Container-tabla -->
+
+    </div>
+
+    <div class="grafs">
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Percentiles de peso</h3>
+            <canvas id="chartPeso">{{ chartPeso }}</canvas>
+        </div>
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Percentiles de altura</h3>
+            <canvas id="chartAltura">{{ chartAltura }}</canvas>
+        </div>
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Transcurso del peso</h3>
+            <canvas id="transcPeso">{{ transcPeso }}</canvas>
+        </div>
+        <div>
+            <h3 class="pt-4 pb-1 font-weight-bold">Transcurso de la altura</h3>
+            <canvas id="transcAltura">{{ transcAltura }}</canvas>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</div>

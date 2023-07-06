@@ -1,0 +1,67 @@
+<div class="container quicksand-font mt--8">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card bg-secondary border-0 mb-0">
+
+                <div class="card-header bg-transparent pb-4">
+                    <div class="text-muted text-center mt-2 mb-3"><span class="medium-font font-size-85">Inicia sesión con</span></div>
+                    <div class="btn-wrapper text-center">
+                        <div id="my-signin2" class="btn btn-neutral btn-icon">
+                            <span class="btn-inner--icon"><img src="assets/img/icons/common/google.svg" alt=""></span>
+                            <span class="btn-inner--text text-dark">Google</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                        <span class="medium-font font-size-85">O inicia sesión con nuestros credenciales</span>
+                    </div>
+                    <form role="form" [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('email')}">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input id="email" formControlName="email" class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('email')}" type="email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Contraseña</label>
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('password')}">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input id="password" formControlName="password" class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('password')}" type="password">
+                            </div>
+                        </div>
+                        <div class="custom-control custom-control-alternative custom-checkbox">
+                            <input formControlName="remember" class="custom-control-input" id="customCheckLogin" type="checkbox">
+                            <label class="custom-control-label" for="customCheckLogin">
+                              <span class="text-muted">Recuérdame</span>
+                            </label>
+                        </div>
+                        <div class="text-danger font-italic mt-3">
+                            <p class="small" *ngIf="!campoValido('email')">* El usuario es obligatorio y debe ser un email</p>
+                            <p class="small" *ngIf="!campoValido('password')">* La contraseña es obligatoria</p>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" [disabled]="waiting" class="btn btn-primary my-2">
+                                <i class="fa fa-spinner fa-spin mr-2"*ngIf="waiting"></i>
+                                Iniciar sesión
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-6">
+                    <a routerLink="/recovery" class="enlace-pwd font-size-85">¿Has olvidado tu contraseña?</a>
+                </div>
+                <div class="col-6 text-right">
+                    <a routerLink="/registro" class="text-primario-oscuro enlace-oscuro" style="font-size: 85%;">Crea una cuenta nueva</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,207 @@
+<!-- Topnav -->
+<!-- Page content -->
+<div class="container-fluid quicksand-font mb-3 p-4">
+    <div *ngIf="!pinparental" class="advertencia-pp">
+        <span onclick="this.parentElement.style.display='none'" class="advertencia-pp-span">&times;</span>
+        <p style="font-weight: bold; padding-top: 15px;">¡No olvides configurar tu <a routerLink="/inicio/usuario" style="color:#000; text-decoration: underline;">Pin Parental</a>!</p>
+    </div>
+    <div class="perfiles-grid mt-3">
+        <div class="container-perfiles justify-content-center" id="perfiles-perf">
+            <ng-container *ngFor="let perfil of listaPerfiles">
+                <div *ngIf="perfil.activo" class="card-perfil align-items-center">
+                    <button class="btn btn-eliminar-perfil" (click)="borrarPerfil(perfil.uid, perfil.nombre)">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                    <h3 class="titulo-card" style="margin-top: -2.2rem;">{{perfil.nombre}}</h3>
+                    <div class="px-4 pt-3 d-flex flex-wrap justify-content-center">
+
+                        <div routerLink="/perfil/{{perfil.uid}}" style="position:relative; width: 7.8rem;">
+                            <a routerLink="/perfil/{{perfil.uid}}"><img class="img-perfil-avatar" src={{perfil.avatar}} alt="" style="cursor: pointer;"></a>
+                            <div class="gradiente-avatar">
+                                <p class="mb-0">ZONA INFANTIL</p>
+                            </div>
+                        </div>
+
+                        <div class="resumen-perfil ml-3 align-items-center">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Resumen</th>
+                                        <th class="pl-4">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Comidas Completadas</td>
+                                        <td class="float-right">{{perfil.completadas}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Comidas Falladas</td>
+                                        <td class="float-right">{{perfil.falladas}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Recompensas Compradas</td>
+                                        <td class="float-right">{{perfil.compradas}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex flex-wrap mt-3 px-4 pb-4">
+                        <div class="acciones-perfil d-flex flex-column  m-auto">
+                            <a class="btn mt-2 d-flex align-items-center" [routerLink]="['/inicio/editar-perfil/', perfil.uid]">
+                                <i class="fas fa-edit mr-2"></i>
+                                <span>Editar {{perfil.nombre}}</span>
+                            </a>
+                            <a class="btn mt-2 d-flex align-items-center" [routerLink]="['/inicio/menus/', perfil.uid]">
+                                <i class="fas fa-utensils mr-2"></i>
+                                <span>Gestionar menús</span>
+                            </a>
+                        </div>
+                        <div class="acciones-perfil ml-3 d-flex flex-column  m-auto">
+                            <a class="btn mt-2 d-flex align-items-center" [routerLink]="['/inicio/seg-resumen/', perfil.uid]">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                <span>Ver seguimiento</span>
+                            </a>
+                            <a class="btn mt-2 d-flex align-items-center" [routerLink]="['/inicio/recompensas/', perfil.uid]">
+                                <i class="fas fa-medal mr-2"></i>
+                                <span>Ver recompensas</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!perfil.activo" class="card-perfil align-items-center ">
+                    <button class="btn btn-activar-perfil" (click)="activarPerfil(perfil.uid, perfil.nombre)">
+                  <i class="fa fa-unlock"></i>
+                  </button>
+                    <h3 class="titulo-card" style="margin-top: -2.2rem;">{{perfil.nombre}}</h3>
+                    <div class="perfilDesactivado">
+                        <div class="px-4 pt-3 d-flex flex-wrap justify-content-center">
+                            <img class="img-thumbnail" src="../../../assets/img/avatar_ejemplo.png" alt="">
+                            <div class="resumen-perfil ml-3 align-items-center">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Resumen</th>
+                                            <th class="pl-4">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Comidas Completadas</td>
+                                            <td class="float-right">{{perfil.porcentaje_completadas}} %</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Comidas Falladas</td>
+                                            <td class="float-right">{{perfil.falladas}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Recompensas Compradas</td>
+                                            <td class="float-right">{{perfil.compradas}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap mt-3 px-4 pb-4">
+                            <div class="acciones-perfil d-flex flex-column  m-auto">
+                                <a class="btn btn-desactivado mt-2 d-flex align-items-center">
+                                    <i class="fas fa-edit mr-2"></i>
+                                    <span>Editar {{perfil.nombre}}</span>
+                                </a>
+                                <a class="btn btn-desactivado mt-2 d-flex align-items-center">
+                                    <i class="fas fa-utensils mr-2"></i>
+                                    <span>Gestionar menús</span>
+                                </a>
+                            </div>
+                            <div class="acciones-perfil ml-3 d-flex flex-column  m-auto">
+                                <a class="btn btn-desactivado mt-2 d-flex align-items-center">
+                                    <i class="fas fa-chart-line mr-2"></i>
+                                    <span>Ver seguimiento</span>
+                                </a>
+                                <a class="btn btn-desactivado mt-2 d-flex align-items-center">
+                                    <i class="fas fa-medal mr-2"></i>
+                                    <span>Ver recompensas</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </ng-container>
+
+            <div *ngIf="totalPerfiles>0 && totalPerfiles<4 " class="d-flex flex-column align-items-center justify-content-center" id="visibilidad">
+                <button class="btn btn-nuevo-perfil rounded-circle" [routerLink]="['/inicio/crear-perfil/']">
+                  <img src="../../../assets/img/plus.svg" style="width: 3em;" alt="">
+              </button>
+                <span>Añadir perfil ({{totalPerfiles}}/4)</span>
+            </div>
+            <!--clear-->
+            <div *ngIf="totalPerfiles == 0" class="mt-4 card-perfil align-items-center">
+                <h3 class="titulo-card" style="margin-top: -2.2rem;">{{nombreUsuario}}</h3>
+                <div class="px-4 pt-3 text-center">
+                    <p style="font-weight: 500;">
+                        ¡Bienvenido {{nombreUsuario}}! para empezar a utilizar nuestros servicios debes crear un perfil.
+                    </p>
+                    <p style="font-weight: 500;">Puedes crearlo desde aquí:</p>
+                    <div class="mb-3 d-flex flex-column align-items-center justify-content-center">
+                        <button class="m-0 btn btn-nuevo-perfil" [routerLink]="['/inicio/crear-perfil/']" style="border: 1px solid #ccc; width: 75px; height: 75px; border-radius: 50%;">
+                    <img src="../../../assets/img/plus.svg" style="width: 2em;" alt="">
+                </button>
+                        <span style="font-weight: 700;">Crear perfil</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--clear-->
+        <div class="perfiles-menus card-perfil mt-4 mt-xl-0" *ngIf="totalPerfiles>0">
+            <h3 class="titulo-card mb-0">Resumen menú</h3>
+            <div class="alert bg-primario-claro text-center my-3 pt-4" *ngIf="loadingMenu">
+                <h4 class="alert-heading">Cargando!</h4>
+                <i class="fa fa-spin fa-spinner fa-3x"></i>
+                <p>Por favor, espere</p>
+            </div>
+            <div class="px-md-4 table-responsive-perfm py-3">
+                <h3 *ngIf="!loadingMenu">{{diaTablaN}}</h3>
+                <table class="table table-flush text-center tabla-perf-menu">
+                    <thead class="thead-light">
+                        <tr>
+                            <th [ngClass]="!loadingMenu?'':'prec'"></th>
+                            <ng-container *ngFor="let perfil of listaPerfiles">
+                                <th *ngIf="perfil.activo && !loadingMenu">{{perfil.nombre}}</th>
+                            </ng-container>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let _ of [].constructor(5); let comin=index">
+                            <td [ngClass]="!loadingMenu?'perf-menu-com':'prec'" *ngIf="!loadingMenu">{{elementos[2].elementos[comin].nombre}}</td>
+                            <ng-container *ngFor="let _ of [].constructor(perfilesActivosN); let perfin=index">
+                                <td *ngIf="platosMenuPerfs && platosMenuPerfs[(diaTabla*5+comin)+(perfin*35)]" [ngClass]="!loadingMenu?'perf-menu-com':'prec'" height="100px">
+                                    <ng-container *ngFor="let _ of [].constructor(platosMenuPerfs[(diaTabla*5+comin)+(perfin*35)].length); let perfin2=index">
+                                        <ng-container *ngIf="platosMenuPerfs[(diaTabla*5+comin)+(perfin*35)][perfin2] ? sumarPlatoCargado((diaTabla*5+comin)+(perfin*35)) : false">
+                                            <ng-container *ngIf="!loadingMenu">
+                                                {{platosMenuPerfs[(diaTabla*5+comin)+(perfin*35)][perfin2].nombre}}<br>
+                                            </ng-container>
+                                        </ng-container>
+                                    </ng-container>
+                                </td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="justify-content-center" *ngIf="!loadingMenu">
+                    <button class="btn btn-crear" (click)="cambiarDiaTabla(-1)"><i class="fas fa-solid fa-angle-left" style="color: #525f7f"></i> Anterior día</button>
+                    <button class="btn btn-crear" (click)="cambiarDiaTabla(+1)">Siguiente día <i class="fas fa-solid fa-angle-right" style="color: #525f7f"></i></button>
+                </div>
+            </div>
+        </div>
+        <!--clear-->
+    </div>
+    <!--clear-->
+    <app-footer></app-footer>
+</div>
+<!--clear-->

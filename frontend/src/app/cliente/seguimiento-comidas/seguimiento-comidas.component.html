@@ -1,0 +1,85 @@
+<app-navbar-seguimiento></app-navbar-seguimiento>
+
+<app-printpdf [id]="idPerfil"></app-printpdf>
+
+<div class="container-fluid quicksand-font" style="background-color: var(--fondo-claro);">
+    <h3 class="pt-4 pb-1 ml-md-5 font-weight-bold">Comidas de hoy</h3>
+    <div class="comidas-completadas row justify-content-center">
+        <div *ngFor="let comida of comidasCompletadasHoy" class="col-12 col-sm-6 col-md-2 text-center">
+            <p class="m-1 font-weight-bold">{{comida.comida}}</p>
+            <div class="marcoFComida">
+              <img class="img-comida" src="{{comida.img}}" alt="">
+              <div class="gradiente-menu">
+                <p *ngIf="comida.completada" class="m-1 font-weight-500" style="font-size: .90rem;">Completado <i class="fas fa-check text-success"></i></p>
+                <p *ngIf="!comida.completada" class="m-1 font-weight-500" style="font-size: .90rem;">No completado <i class="fas fa-times text-danger"></i></p>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- Comidas Completadas-->
+
+    <div class="contenedor-tabla-resumen">
+        <h3 class="pt-4 pb-1 ml-md-5 font-weight-bold">Platos consumidos</h3>
+
+        <div class="input-group col-12 col-md-6 pl-0 w-100 mb-3 ml-md-5">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+            </div>
+            <input #txtBuscarPlato type="text" class="form-control" (keyup)="cargarPlatosConsumidos(txtBuscarPlato.value)" placeholder="Plato a buscar" aria-label="Buscar" aria-describedby="basic-addon1">
+            <div class="input-group-append">
+                <span class="input-group-text cursor-pointer" (click)="txtBuscarPlato.value ='';cargarPlatosConsumidos(txtBuscarPlato.value)"><i class="fa fa-times-circle"></i></span>
+            </div>
+        </div>
+        <div class="alert bg-primario-claro text-center my-3 pt-4" *ngIf="loadingPlatosPerfil">
+            <h4 class="alert-heading">Cargando!</h4>
+            <i class="fa fa-spin fa-spinner fa-3x"></i>
+            <p>Por favor, espere</p>
+        </div>
+        <div class="px-md-5 table-responsive pb-2">
+            <table class="table table-flush text-center tabla-pesos" id="tablasegcom" #tablasegcom>
+                <thead class="thead-light">
+                    <tr>
+                        <th>Plato</th>
+                        <th>Fecha de la última vez comido</th>
+                        <th>Veces fallado</th>
+                        <th>Veces gustado</th>
+                        <th>Veces no gustado</th>
+                    </tr>
+                </thead>
+                <tbody class="medium-font">
+                    <tr *ngIf="platosConsumidos.length === 0">
+                      <td colspan="6"> No se ha encontrado ningún resultado </td>
+                    </tr>
+                    <tr *ngFor="let plato of platosConsumidos; let ind=index">
+                        <td *ngIf="plato && plato.plato_id">{{plato.plato_id.nombre}}</td>
+                        <td *ngIf="plato && plato.info_plato[plato.info_plato.length-1]">{{plato.info_plato[plato.info_plato.length-1].fecha}}</td>
+                        <td *ngIf="plato">{{plato.veces_fallado}} <i class="fas fa-times text-danger"></i></td>
+                        <td *ngIf="plato">{{plato.veces_gustado}} <i class="fas fa-smile text-success"></i></td>
+                        <td *ngIf="plato">{{plato.veces_no_gustado}} <i class="fas fa-frown text-danger"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Container-tabla -->
+        <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [texto]="true " [totalRegistros]="totalPlatos" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+    </div>
+
+    <div class="graficas-seguimiento-comidas mx-md-5">
+        <div class="p-3 w-100 bg-white">
+            <h3 class="py-2 ml-md-5 font-weight-bold">Platos más gustados</h3>
+            <canvas #grafica1=base-chart baseChart [data]="datosPlatosMasGustados" [type]="tipoGrafica" [options]="opcionesGrafica"></canvas>
+        </div>
+        <div class="p-3 w-100 bg-white">
+            <h3 class="py-2 ml-md-5 font-weight-bold">Platos menos gustados</h3>
+            <canvas #grafica2=base-chart baseChart [data]="datosPlatosMenosGustados" [type]="tipoGrafica" [options]="opcionesGrafica"></canvas>
+        </div>
+    </div>
+
+    <div class="grafica-suelta p-3 mt-3 mx-md-5 mx-lg-auto bg-white">
+        <h3 class="py-2 ml-md-5 font-weight-bold">Platos más fallados</h3>
+        <canvas #grafica3=base-chart baseChart [data]="datosPlatosMasFallados" [type]="tipoGrafica" [options]="opcionesGrafica"></canvas>
+    </div>
+
+
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,84 @@
+<!-- Topnav -->
+<app-navbar-admin></app-navbar-admin>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header">
+                    <h3 class="mb-0">Usuarios</h3>
+                </div>
+                <div class="container-fluid mt-4">
+                    <div class="row">
+                        <div class="input-group col-12 col-xl-6 w-100">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" style="height: 95%;" id="basic-addon1"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input #txtBuscar type="text" class="form-control" (keyup)="cargarUsuarios(txtBuscar.value)" style="height: 95%;" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1">
+                            <div class="input-group-append">
+                                <span class="input-group-text cursor-pointer" (click)="txtBuscar.value ='';cargarUsuarios(txtBuscar.value)" style="height: 95%;"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alert bg-primario-claro text-center my-3 pt-4" *ngIf="loading">
+                    <h4 class="alert-heading">Cargando!</h4>
+                    <i class="fa fa-spin fa-spinner fa-3x"></i>
+                    <p>Por favor, espere</p>
+                </div>
+                <div class="table-responsive py-4">
+                    <table class="table table-flush" id="datatable-basic">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Premium</th>
+                                <th>Perfiles</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of listaUsuarios; let i = index;">
+                                <td class="vertical-align-middle">{{usuario.nombre_usuario}}</td>
+                                <td class="vertical-align-middle">{{usuario.email}}</td>
+                                <td class="vertical-align-middle">
+                                    <i *ngIf="usuario.rol === 'ROL_PREMIUM'" class="fas fa-check text-green"></i>
+                                    <i *ngIf="usuario.rol === 'ROL_USUARIO' || usuario.rol === 'ROL_ADMIN' " class="fas fa-times text-danger"></i>
+                                </td>
+                                <td class="vertical-align-middle">{{usuario.perfiles?.length}}
+                                    <button *ngIf="usuario.perfiles?.length !== 0" [routerLink]="['/admin/usuarios/perfiles', usuario.uid]" class="btn btn-gris text-primario" style="padding: 5px 10px;">
+                                    <i class="fas fa-eye"></i>
+                                  </button>
+                                    <button *ngIf="usuario.perfiles?.length === 0" class="btn btn-gris no" style="padding: 5px 10px;" disabled>
+                                    <i class="fas fa-eye"></i>
+                                  </button>
+                                </td>
+                                <td class="vertical-align-middle">
+                                    <button class="btn btn-gris" [disabled]="listaUsuarios[i].eliminando" (click)="borrarUsuario(usuario.uid, usuario.nombre_usuario!, i)">
+                                    <i [ngClass]="listaUsuarios[i].eliminando ? 'fa fa-spinner fa-spin' : 'fas fa-trash-alt'" class="mr-2"></i>
+                                    Eliminar
+                                  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [texto]="true " [totalRegistros]="totalUsuarios" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+            </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,86 @@
+<!-- Page content -->
+<div class="container quicksand-font mt--8">
+    <!-- Table -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card bg-secondary border-0 mb-0">
+                <div class="card-header bg-transparent p-2 pb-3">
+                    <div class="text-muted text-center mt-2 mb-3"><span class="medium-font font-size-85">Regístrate con</span></div>
+                    <div class="btn-wrapper text-center">
+                        <div id="my-signin2" class="btn btn-neutral btn-icon">
+                            <span class="btn-inner--icon"><img src="assets/img/icons/common/google.svg" alt=""></span>
+                            <span class="btn-inner--text text-dark">Google</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-3">
+                    <div class="text-center text-muted mb-4">
+                        <span class="medium-font font-size-85">Introduce aquí tus datos</span>
+                    </div>
+                    <form role="form" [formGroup]="registerForm" (ngSubmit)="register()">
+                        <div class="form-group esp-bot">
+                            <label for="usuario">Nombre de Usuario</label>
+                            <div class="input-group input-group-merge input-group-alternative mb-3">
+                                <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('usuario')}">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input id="usuario" class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('usuario')}" formControlName="usuario" type="text">
+                            </div>
+                            <p class="small text-danger font-italic mt-3" *ngIf="!campoValido('usuario')">* El nombre de usuario es obligatorio</p>
+                        </div>
+                        <div class="form-group esp-bot">
+                            <label for="email">Email</label>
+                            <div class="input-group input-group-merge input-group-alternative mb-3">
+                                <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('email')}">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input id="email" class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('email')}" formControlName="email" type="email">
+                            </div>
+                            <p class="text-danger mt-3 font-italic small" *ngIf="!campoValido('email')">* El email es obligatorio y debe ser válido</p>
+                        </div>
+                        <div class="form-group esp-bot">
+                            <label for="password1">Contraseña</label>
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('password')}">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input id="password1" class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('password')}" formControlName="password" type="password">
+                            </div>
+                            <p class="text-danger mt-3 font-italic small" *ngIf="!campoValido('password')">* La contraseña es obligatoria</p>
+                        </div>
+                        <div class="form-group esp-bot">
+                            <label for="password2">Repetir contraseña</label>
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('confirmarPassword')}">
+                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input id="password2" class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('confirmarPassword')}" formControlName="confirmarPassword" type="password">
+                            </div>
+                            <p class="text-danger font-italic mt-3 small" *ngIf="!campoValido('confirmarPassword')">* Por favor, introduzca la contraseña de nuevo</p>
+                            <p class="text-danger font-italic mt-3 small" *ngIf="!checarSiSonIguales()">* Las contraseñas no coinciden</p>
+                        </div>
+                        <div class="row my-4">
+                            <div class="col-12">
+                                <div class="custom-control custom-control-alternative custom-checkbox">
+                                    <input class="custom-control-input" id="customCheckRegister" type="checkbox" formControlName="checkbox">
+                                    <label class="custom-control-label" for="customCheckRegister">
+                                      <span class="text-muted">Aceptas nuestras condiciones de uso y política de privacidad</span>
+                                    </label>
+                                </div>
+                                <p class="text-danger mt-2 font-italic small" *ngIf="!campoValido('checkbox')">* Debe aceptar las condiciones de uso y la política de privacidad</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" [disabled]="waiting" class="btn btn-primary">
+                              <i class="fa fa-spinner fa-spin mr-2"*ngIf="waiting"></i>
+                              Crear cuenta</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-3">
+                <p class="" style="font-size: 85%">¿Ya tienes cuenta? <a routerLink="/login" class="enlace-pwd"> Inicia Sesión</a></p>
+            </div>
+        </div>
+    </div>
+</div>

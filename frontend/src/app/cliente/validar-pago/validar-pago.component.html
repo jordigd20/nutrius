@@ -1,0 +1,39 @@
+<div class="quicksand-font">
+
+  <div class="bg-white text-center py-5" *ngIf="loading">
+    <h2 class="alert-heading" style="font-size: 1.2rem;">Procesando el pago...</h2>
+    <i class="fa fa-spin fa-spinner fa-3x" style="font-size: 5rem;"></i>
+    <p class="font-weight-bold pt-2" style="font-size: 1rem;">Por favor, espere</p>
+  </div>
+
+  <div class="bg-success text-center py-5" *ngIf="!loading && pagoValido">
+    <i class="fa fa-check-circle fa-3x text-white" [@popOverAnimation] style="font-size: 7rem;"></i>
+    <h2 class="alert-heading mt-3 mb-0 text-white" style="font-size: 1.2rem; font-weight: 700;">¡Tu compra se ha realizado correctamente!</h2>
+  </div>
+
+  <div class="bg-white text-center py-3" *ngIf="!loading && pagoValido">
+    <h3 class="mb-3 titulo-datos-subs">Estos son los datos de tu subscripción:</h3>
+    <ul class="datos-subscripcion">
+      <li class="d-flex justify-content-between align-items-center pt-1">
+        <span class="px-2 titulo">Plan</span><span class="px-2 valor">{{datosPremium.plan}}</span>
+      </li>
+      <li class="d-flex justify-content-between align-items-center pt-1">
+        <span class="px-2 titulo">Método de pago</span><span class="px-2 valor">{{datosPremium.metodo_pago === 1 ? 'Tarjeta' : 'Paypal'}}</span>
+      </li>
+      <li class="d-flex justify-content-between align-items-center pt-1">
+        <span class="px-2 titulo">Fecha de compra</span><span class="px-2 valor">{{datosPremium.fecha_inicio}}</span>
+      </li>
+      <li class="d-flex justify-content-between align-items-center pt-1">
+        <span class="px-2 titulo">Precio total</span><span class="px-2 valor">{{datosPremium.precio}}€</span>
+      </li>
+    </ul>
+
+    <div class="py-3">
+      <p class="font-weight-bold" style="color: #3d3d3d;">Puedes ver el historial de tus compras desde el apartado Premium</p>
+      <a routerLink="/inicio/premium" class="btn btn-primary"> Premium</a>
+    </div>
+  </div>
+
+
+  <app-footer></app-footer>
+</div>

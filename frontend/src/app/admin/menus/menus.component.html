@@ -1,0 +1,91 @@
+<!-- Topnav -->
+<app-navbar-admin></app-navbar-admin>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="mb-0">Menús</h3>
+                    <button [routerLink]="'/admin/menus/nuevo-menu'" class="btn btn-crear">
+                      <i class="fas fa-plus"></i>
+                      Nuevo
+                    </button>
+                </div>
+                <div class="container-fluid mt-4">
+                    <form [formGroup]="buscarForm" (ngSubmit)="cargarMenus()">
+                        <div class="row buscador-menus-admin">
+                            <div class="input-group col-12 col-md-9 col-xl-6 w-100">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" style="height: 95%;" id="basic-addon1"><i class="fas fa-search"></i></span>
+                                </div>
+                                <input type="text" class="form-control" formControlName="texto" style="height: 95%;" placeholder="Buscar" aria-label="Buscar" aria-describedby="basic-addon1">
+                                <div class="input-group-append">
+                                    <span class="input-group-text cursor-pointer" style="height: 95%;" (click)="borrar()"><i class="fa fa-times-circle"></i></span>
+                                </div>
+                            </div>
+                            <div class="input-group w-25" id="categorias-menus-admin">
+                                <select class="form-control" formControlName="objetivo">
+                          <option value="" selected>Todos los objetivos</option>
+                          <option *ngFor="let objetivo of elementos[0].elementos;" value="{{objetivo.id}}">{{objetivo.nombre}}</option>
+                          </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="alert bg-primario-claro text-center my-3 pt-4" *ngIf="loading">
+                    <h4 class="alert-heading">Cargando!</h4>
+                    <i class="fa fa-spin fa-spinner fa-3x"></i>
+                    <p>Por favor, espere</p>
+                </div>
+                <div class="table-responsive py-4">
+                    <table class="table table-flush" id="datatable-basic">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Objetivo</th>
+                                <th>Fecha recomendada</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let menu of listaMenus; let i = index;">
+                                <td class="vertical-align-middle">{{menu.nombre}}</td>
+                                <td class="vertical-align-middle">{{elementos[0].elementos[(+menu.objetivo) - 1].nombre}}</td>
+                                <td class="vertical-align-middle">
+                                    <div *ngFor="let rec of menu.fecharec;">
+                                      <ng-container>{{elementos[3].elementos[(+rec) - 1].nombre}}</ng-container>
+                                  </div>
+                                </td>
+                                <td class="vertical-align-middle">
+                                    <button [routerLink]="['/admin/menus/editar-menu', menu.uid]" class="btn btn-gris mr-2" style="display: inline-block">
+                                      <i class="fas fa-pencil-alt text-primario mr-2"></i> Editar
+                                    </button>
+                                    <button [disabled]="listaMenus[i].eliminando" class="btn btn-gris mr-2" (click)="borrarMenu(menu.uid, menu.nombre!, i)">
+                                      <i [ngClass]="listaMenus[i].eliminando ? 'fa fa-spinner fa-spin' : 'fas fa-trash-alt'" class="mr-2"></i>
+                                      Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <app-paginacion (cambiarPagina)="cambiarPagina( $event )" [texto]="true " [totalRegistros]="totalMenus" [registroActual]="posicionActual+1" [registrosPorPagina]="registrosPorPagina"></app-paginacion>
+            </div>
+
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

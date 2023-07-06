@@ -1,0 +1,143 @@
+<!-- Page content -->
+<div class="fact quicksand-font container-fluid mb-3 p-4">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="mb-0">Perfil de {{nombrePerfil}}</h3>
+                    <a [routerLink]="'/inicio/'" class="btn btn-crear">Volver</a>
+                </div>
+
+                <div class="perfil-grid">
+
+                    <div class="form-section" id="perfil-avatar">
+                        <h3 class="p-3 pl-4 text-center">Avatar del perfil</h3>
+                        <div class="px-3 py-5 d-flex flex-column flex-md-row justify-content-center align-items-center">
+                            <img class="img-thumbnail img-avatar" src={{avatarPerfil}} alt="" id="avatar">
+                            <div class="mt-4 mt-md-0 ml-md-5 grid-avatares">
+                                <img class="img-thumbnail cursor-img" src="../../../assets/img/avatar1.jpeg" alt="" (click)="cambiarAvatar(1)">
+                                <img class="img-thumbnail cursor-img" src="../../../assets/img/avatar2.jpeg" alt="" (click)="cambiarAvatar(2)">
+                                <img class="img-thumbnail cursor-img" src="../../../assets/img/avatar3.jpeg" alt="" (click)="cambiarAvatar(3)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section radius-bot-left" id="perfil-datos">
+                        <h3 class="p-3 pl-4 text-center">Datos personales</h3>
+                        <div class="form-content mx-3">
+                            <form [formGroup]="personalesForm">
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="nombre" class="col-form-label">Nombre *</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" formControlName="nombre" [ngClass]="{'campo-incorrecto': !campoValido('nombre')}" id="nombre" value={{nombrePerfil}}>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('nombre')">* El nombre es un campo obligatorio y no debe coincidir con el de otro perfil</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="apellidos" class="col-form-label">Apellidos *</label>
+                                        <div class="">
+                                            <input type="text" class="form-control" formControlName="apellidos" [ngClass]="{'campo-incorrecto': !campoValido('apellidos')}" id="apellidos" value={{apellidosPerfil}}>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('apellidos')">* Apellidos es un campo obligatorio</p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="fecha_nacimiento" class="col-form-label">Fecha de nacimiento *</label>
+                                        <div class="">
+                                            <input type="date" class="form-control" formControlName="fecha_nacimiento" [ngClass]="{'campo-incorrecto': !campoValido('fecha_nacimiento')}" id="fecha_nacimiento" value={{fechaPerfil}}>
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('fecha_nacimiento')">* La fecha de nacimiento es obligatoria y el perfil debe ser mayor a 4 años</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-center">
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label class="col-form-label">Sexo *</label>
+                                        <div class="">
+                                            <select class="custom-select" formControlName="sexo" id="sexo">
+                                    <option selected value={{sexoPerfil}}>{{sexoPerfil}}</option>
+                                    <option value={{elotroSexo1}}>{{elotroSexo1}}</option>
+                                  </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-12 col-sm-6 align-items-center" *ngIf="objetivoPerfil !== 'Dieta saludable'">
+                                        <label for="peso_objetivo" class="col-form-label">Peso objetivo *</label>
+                                        <div class="">
+                                            <input type="number" class="form-control" formControlName="peso_objetivo" [ngClass]="{'campo-incorrecto': !campoValido('peso_objetivo') || !comprobarPesoObj()}" id="peso_objetivo" value={{pesoObjetivo}} min="-1">
+                                            <p class="small text-danger font-italic" *ngIf="!campoValido('peso_objetivo') || !comprobarPesoObj()">*El peso objetivo es obligatorio</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row aling-items-center">
+                                    <div class="form-group col-12 col-sm-6 align-items-center">
+                                        <label for="fecha_objetivo" class="col-form-label">Fecha objetivo</label>
+                                        <div class="">
+                                            <input type="date" class="form-control" formControlName="fecha_objetivo" id="fecha_objetivo" value={{fechaObjetivo}}>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-1 pr-1 text-right">
+                                    <button type="submit" [disabled]="datosPersonalesWaiting" class="btn btn-primario" (click)="actualizarDatosPersonales()">
+                              <i class="fa fa-spinner fa-spin mr-2"*ngIf="datosPersonalesWaiting"></i>
+                              Guardar
+                            </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="form-section radius-bot-right" id="perfil-menus">
+                        <h3 class="p-3 pl-4 text-center">Datos para los menus</h3>
+                        <div class="form-content">
+                            <div class="mx-3 text-align-center">
+                                <form [formGroup]="datosmenuForm">
+
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="form-group col-8">
+                                            <span class="col-form-label">Objetivo *</span>
+                                            <div class="mt-1">
+                                                <select class="custom-select" formControlName="objetivo" id="objetivo" (change)="cambioObjetivo($event)">
+                                        <option selected value={{objetivoPerfil}}>{{objetivoPerfil}}</option>
+                                        <option value={{elotroObjetivo1}}>{{elotroObjetivo1}}</option>
+                                        <option value={{elotroObjetivo2}}>{{elotroObjetivo2}}</option>
+                                      </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-8">
+                                            <span for="peso" class="col-form-label">Intolerancias</span>
+                                            <div class="mt-1 checkIntolerancias">
+                                                <div *ngFor="let alergia of intoleranciasDisponibles; let i = index">
+                                                    <input formArrayName="intolerancias" type="checkbox" class="mr-2" id="{{alergia.name}}" name="{{alergia.name}}" [checked]="alergia.marcado" (change)="onCheckboxChange($event, alergia.id)">
+                                                    <label class="form-check-label light-font" for="{{alergia.name}}">
+                                      <img style="width: 25px;" [src]="intoleranciaIconoURL + alergia.img">
+                                      {{alergia.name.charAt(0).toUpperCase() + alergia.name.slice(1)}}
+                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-5 pr-1 text-right">
+                                        <button type="submit" [disabled]="datosMenuWaiting" class="btn btn-primario" (click)="actualizarDatosIntolerancias()">
+                                  <i class="fa fa-spinner fa-spin mr-2"*ngIf="datosMenuWaiting"></i>
+                                  Guardar
+                                </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</div>

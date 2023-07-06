@@ -1,0 +1,72 @@
+<div class="container quicksand-font mt--8 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card bg-secondary border-0 mb-0">
+                <div *ngIf="!recuperar" class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                        <span class="medium-font font-size-85">Introduce tu email</span>
+                    </div>
+                    <form role="form" [formGroup]="recoveryForm" (ngSubmit)="enviarEmail()">
+                        <div class="form-group mb-3">
+                            <label for="email">Email</label>
+                            <div class="input-group input-group-merge input-group-alternative">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input id="email" formControlName="email" class="form-control" placeholder="Email" type="email">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button routerLink="/login" type="button" class="btn my-4" style="background-color: var(--primario-claro);">
+                              <i class="fas fa-chevron-left mr-1"></i>
+                              Volver
+                            </button>
+                            <button type="submit" [disabled]="waiting" class="btn btn-primary my-4">
+                              <i class="fa fa-spinner fa-spin mr-2"*ngIf="waiting"></i>
+                              Recuperar
+                            </button>
+                        </div>
+                        <div *ngIf="enviado">
+                            <p>Le hemos enviado un correo con un link para crear una nueva contraseña. Por favor, verifique su cuenta de correo electrónico y haga click en el enlace del mismo.</p>
+                            <p>Si no ha recibido el email, vuelva a pulsar el botón de Recuperar.</p>
+                        </div>
+                    </form>
+                </div>
+                <div *ngIf="recuperar" class="card-body px-lg-5 py-lg-5">
+                    <div class="text-center text-muted mb-4">
+                        <h3>Restablecer Contraseña</h3>
+                    </div>
+                    <form role="form" [formGroup]="recoveryPassForm" (ngSubmit)="restablecer()">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('password')}">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    </div>
+                                    <input class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('password')}" formControlName="password" placeholder="Contraseña" type="password">
+                                </div>
+                                <p class="text-danger mt-3 font-italic small" *ngIf="!campoValido('password')">* La contraseña es obligatoria</p>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group input-group-merge input-group-alternative">
+                                    <div class="input-group-prepend" [ngClass]="{'div-incorrecto-login': !campoValido('confirmarPassword')}">
+                                        <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                    </div>
+                                    <input class="form-control" [ngClass]="{'campo-incorrecto-login': !campoValido('confirmarPassword')}" formControlName="confirmarPassword" placeholder="Repetir contraseña" type="password">
+                                </div>
+                                <p class="text-danger font-italic mt-3 small" *ngIf="campoValido('password') && !campoValido('confirmarPassword')">* Por favor, introduzca la contraseña de nuevo</p>
+                                <p class="text-danger font-italic mt-3 small" *ngIf="!checarSiSonIguales()">* Las contraseñas no coinciden</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" [disabled]="waiting" class="btn btn-primary my-2">
+                              <i class="fa fa-spinner fa-spin mr-2"*ngIf="waiting"></i>
+                              Restablecer Contraseña
+                          </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

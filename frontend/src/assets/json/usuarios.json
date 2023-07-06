@@ -1,0 +1,261 @@
+[{
+  "_id": {
+    "$oid": "6186c8d82862a93ba0da93f1"
+  },
+  "nombre_usuario": "Juan Perez",
+  "email": "juanperez@gmail.com",
+  "password": "$2a$10$QSl1m5e1MceIJip7aZWyOu471l9REFeHGdPdOtWEm8POvl9AeIuV6",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "6186c5e50d55fe4a99d49481"
+    },
+    {
+      "$oid": "6186ca4f2862a93ba0da9402"
+    },
+    {
+      "$oid": "61c364af1ca0e52b164a5589"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "618fbb2d42ee614cb1967a9c"
+  },
+  "nombre_usuario": "admin",
+  "email": "admin@gmail.com",
+  "password": "$2a$10$tXtTYSRPFoJatOKMoJ0w2eW4jLMf0Hi3V5YDwkTfQY4TUD54O0LJy",
+  "rol": "ROL_ADMIN",
+  "premium": false,
+  "perfiles": [],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7435bca0dafb8a49536"
+  },
+  "nombre_usuario": "Jose Martínez",
+  "email": "josemartinez@gmail.com",
+  "password": "$2a$10$E7z0zufO1TnhYtg7d2yZROiIdgFcrq0N5qPDO74kY3yqg.WRFsNnq",
+  "rol": "ROL_PREMIUM",
+  "perfiles": [
+    {
+      "$oid": "619bef3edb49f31ef344c3f9"
+    },
+    {
+      "$oid": "61c364af1ca0e52b164a558a"
+    }
+  ],
+  "premium": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7475bca0dafb8a49539"
+  },
+  "nombre_usuario": "David Hernandez",
+  "email": "davidhernandez@gmail.com",
+  "password": "$2a$10$tdAeVBF6rq3ySRfER4rgvektmaxFNBaZQcIptagmglwIhr4OlT3ja",
+  "rol": "ROL_PREMIUM",
+  "premium": true,
+  "perfiles": [
+    {
+      "$oid": "61c364af1ca0e52b164a558b"
+    },
+    {
+      "$oid": "61c364af1ca0e52b164a558c"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d74a5bca0dafb8a4953c"
+  },
+  "nombre_usuario": "Sandra Perez",
+  "email": "sandraperez@gmail.com",
+  "password": "$2a$10$/tuIhaR4qwYhx0XK6jzA4uiUx0Erc81QoFo3onLLDtkHEQrTPlREW",
+  "rol": "ROL_PREMIUM",
+  "premium": true,
+  "perfiles": [
+    {
+      "$oid": "61c364af1ca0e52b164a558d"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7525bca0dafb8a49542"
+  },
+  "nombre_usuario": "Bea González",
+  "email": "beagonzalez@gmail.com",
+  "password": "$2a$10$foex1NpfbnR3sRnFH/kZnOMG3JsgaiXglegFIoaLYDwRai47rc052",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c364af1ca0e52b164a558e"
+    },
+    {
+      "$oid": "61c364af1ca0e52b164a558f"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7555bca0dafb8a49545"
+  },
+  "nombre_usuario": "Alicia Devesa",
+  "email": "aliciadevesa@gmail.com",
+  "password": "$2a$10$NSVtgcfQU0pOGLmOWXafKeiTxqyklNn0a1kl/sd1WJUXoIk/w8qzK",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c364af1ca0e52b164a5590"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d75c5bca0dafb8a49548"
+  },
+  "nombre_usuario": "Pablo Perez",
+  "email": "pabloperez@gmail.com",
+  "password": "$2a$10$fe8VT3XayI2S1PCctchTwe2.OsD/8nxGTpGVMUnYYzfpnzkEEezX2",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c364af1ca0e52b164a5591"
+    },
+    {
+      "$oid": "61c364af1ca0e52b164a5592"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7605bca0dafb8a4954b"
+  },
+  "nombre_usuario": "Miquel Perez",
+  "email": "miquelperez@gmail.com",
+  "password": "$2a$10$JXI9sqP6BkTKkIThAzSQC.QgePgRnp2u2lrZ99AGAZLepCumxLAjW",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c364af1ca0e52b164a5592"
+    },
+    {
+      "$oid": "61c364af1ca0e52b164a5592"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7655bca0dafb8a4954e"
+  },
+  "nombre_usuario": "Carmen Lopez",
+  "email": "carmenlopez@gmail.com",
+  "password": "$2a$10$gsk9KvLi0o.YJCINI4tiruOmJaXGUvWdIgDRdnuhl4i.ji7jsSdwS",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c36c381ca0e52b164a5597"
+    },
+    {
+      "$oid": "61c36c381ca0e52b164a5598"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7775bca0dafb8a49551"
+  },
+  "nombre_usuario": "Pedro Martinez",
+  "email": "pedromartinez@gmail.com",
+  "password": "$2a$10$kXQPagia7leiThqPpriSCub/.qNNqyfPRrdOilOr.XuwvGmf4JW0G",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c36c381ca0e52b164a5599"
+    },
+    {
+      "$oid": "61c36c381ca0e52b164a559a"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7815bca0dafb8a49554"
+  },
+  "nombre_usuario": "Teresa Sanchez",
+  "email": "teresasanchez@gmail.com",
+  "password": "$2a$10$up96WVWT.pPhxDDg/dNX/OHYU.nHF6TnU4W2h73v.KYxxWgrNktPW",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c36c381ca0e52b164a559b"
+    },
+    {
+      "$oid": "61c36c381ca0e52b164a559c"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7895bca0dafb8a49557"
+  },
+  "nombre_usuario": "Elena García",
+  "email": "elenagarcia@gmail.com",
+  "password": "$2a$10$XHR6LtlJG08Z.0dhfBtnJO5XJlhzemcBQCoCIsvcGiKCr8SpKU2iy",
+  "rol": "ROL_PREMIUM",
+  "premium": true,
+  "perfiles": [
+    {
+      "$oid": "61c36c381ca0e52b164a559d"
+    },
+    {
+      "$oid": "61c36c381ca0e52b164a559e"
+    }
+  ],
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6193d7915bca0dafb8a4955a"
+  },
+  "nombre_usuario": "Cristina Perez",
+  "email": "cristinaperez@gmail.com",
+  "password": "$2a$10$BoxEc87lFaHUlOWuIp0qm.bAqf679rUp1K2AVSyUQHPi6RKaQciPC",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c36c381ca0e52b164a559f"
+    },
+    {
+      "$oid": "61c36c381ca0e52b164a55a0"
+    }
+  ],
+  "__v": 0
+}, {
+  "_id": {
+    "$oid": "6193d74e5bca0dafb8a4953f"
+  },
+  "nombre_usuario": "Laura García",
+  "email": "lauragarcia@gmail.com",
+  "password": "$2a$10$xKIOAra3j26IwmVAk9LNAOJ8qAQreY17cPdsH82Htthz4huJdDop2",
+  "rol": "ROL_USUARIO",
+  "premium": false,
+  "perfiles": [
+    {
+      "$oid": "61c36c381ca0e52b164a55a2"
+    },
+    {
+      "$oid": "61c36c381ca0e52b164a55a1"
+    }
+  ],
+  "__v": 0
+}]

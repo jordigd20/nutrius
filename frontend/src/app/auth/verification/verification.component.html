@@ -1,0 +1,28 @@
+<!-- Page content -->
+<div class="container quicksand-font mt--8 pb-5">
+    <!-- Table -->
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <div class="card bg-secondary border-0">
+                <div *ngIf="token === undefined" class="card-header bg-transparent pb-5">
+                    <h4>Le hemos enviado un correo con un link de activación. Por favor, verifique su cuenta de correo electrónico para poder activar su cuenta y completar su registro.</h4>
+                    <h5>Si no ha recibido el email, pulse en el siguiente botón</h5>
+                    <div class="text-center">
+                        <button type="button" (click)="enviar()" class="btn btn-crear mt-4">
+                          <i class="fa fa-spinner fa-spin mr-2"*ngIf="waiting"></i>
+                          Volver a enviar
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="token !== undefined" class="card-header bg-transparent pb-5">
+                    <h5>Enhorabuena, tu cuenta se ha verificado correctamente. Ya puedes iniciar sesión.</h5>
+                    <div class="text-center">
+                        <button type="button" routerLink="/login" class="btn btn-primary mt-4">
+                          Iniciar Sesión
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

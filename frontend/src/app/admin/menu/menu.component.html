@@ -1,0 +1,385 @@
+<!-- Topnav -->
+<app-navbar-admin></app-navbar-admin>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid quicksand-font mt--6">
+    <div class="row">
+        <div class="col">
+            <!-- Datatable -->
+            <div class="card">
+                <!-- Card header -->
+                <div class="card-header d-flex justify-content-between">
+                    <h3 class="mb-0">Detalle del menú</h3>
+                    <button (click)="volver()" class="btn btn-crear">Volver</button>
+                </div>
+               <div class="container-fluid mt-4 editar-menu-save">
+                    <form [formGroup]="datosForm">
+                      <div class="d-flex justify-content-between">
+                        <label for="nombre"><strong>Nombre</strong></label><br>
+                        <label for="fecharec"><strong>Objetivo</strong></label><br>
+                        <label for="fecharec"><strong>Fecha recomendada</strong></label><br>
+                      </div>
+
+                      <div class="d-flex justify-content-between">
+
+                        <input class="form-control" type="text" formControlName="nombre" value="{{nombreMenu}}">
+
+                        <div class="input-group" style="margin-left: 0.5em;">
+                          <select class="form-control" formControlName="objetivo">
+                            <ng-container *ngFor="let objetivo of elementos[0].elementos;">
+                              <option *ngIf="objetivo.id === objetivoMenu" value="" selected="true">{{objetivo.nombre}}</option>
+                              <option *ngIf="!(objetivo.id === objetivoMenu)" value="{{objetivo.id}}">{{objetivo.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+
+
+                        <div class="d-flex align-items-center" *ngFor="let fecha of posiblesFechas; let i = index">
+                          <input type="checkbox" class="mx-2" formArrayName="fecharec" id="{{fecha.name}}" value="{{fecha.name}}" [checked]="fecha.marcado" (change)="onCheckboxChange($event, fecha.id)">
+                          <label class="form-check-label" for="{{fecha.name}}">{{fecha.name}}</label>
+                        </div>
+
+
+                      </div>
+                    </form>
+                    <div class="save-menu-btn">
+                        <a (click)="guardarCambios()" class="btn bg-primario text-center text-white">Guardar datos</a>
+                    </div>
+               </div>
+
+               <div class="alert bg-primario-claro text-center my-3 pt-4" *ngIf="loading">
+                  <h4 class="alert-heading">Cargando!</h4>
+                  <i class="fa fa-spin fa-spinner fa-3x"></i>
+                  <p>Por favor, espere</p>
+                </div>
+
+                <div class="table-responsive pt-4" *ngIf="!loading">
+                    <table class="table table-flush" id="tabla-menu">
+                        <thead class="thead-light">
+                            <tr>
+                                <th></th>
+                                <th>Lunes</th>
+                                <th>Martes</th>
+                                <th>Miércoles</th>
+                                <th>Jueves</th>
+                                <th>Viernes</th>
+                                <th>Sabado</th>
+                                <th>Domingo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Desayunos -->
+                            <tr>
+                                <td class="indice-menu td-marcado">
+                                    <p class="m-0 indice-menu">D</p>
+                                    <p class="m-0 indice-menu">e</p>
+                                    <p class="m-0 indice-menu">s</p>
+                                    <p class="m-0 indice-menu">a</p>
+                                    <p class="m-0 indice-menu">y</p>
+                                    <p class="m-0 indice-menu">u</p>
+                                    <p class="m-0 indice-menu">n</p>
+                                    <p class="m-0 indice-menu">o</p>
+                                </td>
+
+                                <td *ngFor="let _ of [].constructor(7); let diaNumber=index" class="px-0 td-marcado">
+                                  <div *ngIf="platosMenu[diaNumber*5] && (platosMenu[diaNumber*5].length)<4" class="add-plato">
+                                    <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'0'+(platosMenu[diaNumber*5].length)]" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                  </div>
+
+                                  <div *ngIf="!platosMenu[diaNumber*5]" class="add-plato">
+                                    <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'00']" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                  </div>
+
+                                    <ng-container *ngFor="let _ of [].constructor(platosMenu[diaNumber*5]?.length); let plaNumber=index">
+                                      <div class="mb-3 plato-en-menu" *ngIf="platosMenu[diaNumber*5]" [ngClass]="{'mt-5': platosMenu[diaNumber*5].length == 4 && plaNumber === 0}">
+
+                                        <div class="container-img-plato" *ngIf="platosMenu[diaNumber*5]" (mouseenter)="mostrarHoverPlato(diaNumber*5, plaNumber)" (mouseleave)="esconderHoverPlato(diaNumber*5, plaNumber)" >
+
+                                          <div class="container-cambiar-plato" [@popOverAnimation] *ngIf="dataHoverPlatos[diaNumber*5][plaNumber]" [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', platosMenu[diaNumber*5][plaNumber].uid, 'pos', diaNumber+'0'+plaNumber]">
+                                            <i class="fas fa-exchange-alt mx-1"></i><p class="mx-1 titulo-plato">Cambiar de plato</p>
+                                          </div>
+
+                                          <a class="btn btn-eliminar" (click)="borrarPlato(diaNumber,0,plaNumber)" (mouseenter)="esconderHoverPlato(diaNumber*5, plaNumber)" (mouseleave)="mostrarHoverPlato(diaNumber*5, plaNumber)"><i class="fas fa-times cursor-pointer del"></i></a>
+
+                                          <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber] && platosMenu[diaNumber*5][plaNumber].imagen" src="{{'../../../assets/img/platos/' + platosMenu[diaNumber*5][plaNumber].imagen}}" class="img-menu " alt=" ">
+                                          <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber] && !platosMenu[diaNumber*5][plaNumber].imagen" src="../../../assets/img/platos/noimage.jpg" class="img-menu " alt=" ">
+
+                                          <ng-container *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber]">
+                                            <div class="gradiente-menu">
+                                              <div class="intolerancias-plato ">
+                                                  <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber].intolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber].intolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber].intolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber].intolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber].intolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber].intolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5] && platosMenu[diaNumber*5][plaNumber].intolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                              </div>
+                                              <p class="titulo-plato " *ngIf="platosMenu[diaNumber*5]">{{platosMenu[diaNumber*5][plaNumber].nombre}}</p>
+                                            </div>
+                                          </ng-container>
+
+                                        </div>
+
+
+                                      </div>
+                                    </ng-container>
+
+
+
+                                </td>
+
+
+
+                            </tr>
+                            <!-- Almuerzo -->
+                            <tr>
+                                <td class="indice-menu td-marcado ">
+                                    <p class="m-0 indice-menu ">A</p>
+                                    <p class="m-0 indice-menu ">l</p>
+                                    <p class="m-0 indice-menu ">m</p>
+                                    <p class="m-0 indice-menu ">u</p>
+                                    <p class="m-0 indice-menu ">e</p>
+                                    <p class="m-0 indice-menu ">r</p>
+                                    <p class="m-0 indice-menu ">z</p>
+                                    <p class="m-0 indice-menu ">o</p>
+                                </td>
+                                <td *ngFor="let _ of [].constructor(7); let diaNumber=index" class="px-0 td-marcado">
+                                    <div *ngIf="platosMenu[diaNumber*5+1] && (platosMenu[diaNumber*5+1].length)<4" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'1'+(platosMenu[diaNumber*5+1].length)]" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <div *ngIf="!platosMenu[diaNumber*5+1]" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'10']" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <ng-container *ngFor="let _ of [].constructor(platosMenu[diaNumber*5+1]?.length); let plaNumber=index">
+                                      <div class="mb-3 plato-en-menu" *ngIf="platosMenu[diaNumber*5+1]" [ngClass]="{'mt-5': platosMenu[diaNumber*5+1].length == 4 && plaNumber === 0}">
+
+                                        <div class="container-img-plato" *ngIf="platosMenu[diaNumber*5+1]" (mouseenter)="mostrarHoverPlato(diaNumber*5+1, plaNumber)" (mouseleave)="esconderHoverPlato(diaNumber*5+1, plaNumber)">
+
+                                          <div class="container-cambiar-plato" [@popOverAnimation] *ngIf="dataHoverPlatos[diaNumber*5+1][plaNumber]" [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', platosMenu[diaNumber*5+1][plaNumber].uid, 'pos', diaNumber+'1'+plaNumber]">
+                                            <i class="fas fa-exchange-alt mx-1"></i><p class="mx-1 titulo-plato">Cambiar de plato</p>
+                                          </div>
+
+                                          <div class="menu-plato-del">
+                                            <a class="btn btn-eliminar" (click)="borrarPlato(diaNumber,1,plaNumber)" (mouseenter)="esconderHoverPlato(diaNumber*5+1, plaNumber)" (mouseleave)="mostrarHoverPlato(diaNumber*5+1, plaNumber)"><i class="fas fa-times cursor-pointer del"></i></a>
+                                          </div>
+
+                                          <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber] && platosMenu[diaNumber*5+1][plaNumber].imagen" src="{{'../../../assets/img/platos/' + platosMenu[diaNumber*5+1][plaNumber].imagen}}" class="img-menu " alt=" ">
+                                          <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber] && !platosMenu[diaNumber*5+1][plaNumber].imagen" src="../../../assets/img/platos/noimage.jpg" class="img-menu " alt=" ">
+
+                                          <ng-container *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber]">
+                                            <div class="gradiente-menu">
+                                              <div class="intolerancias-plato">
+                                                  <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber].intolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber].intolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber].intolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber].intolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber].intolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber].intolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                                  <img *ngIf="platosMenu[diaNumber*5+1] && platosMenu[diaNumber*5+1][plaNumber].intolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                              </div>
+                                              <p class="titulo-plato" *ngIf="platosMenu[diaNumber*5+2]">{{platosMenu[diaNumber*5+1][plaNumber].nombre}}</p>
+                                            </div>
+                                          </ng-container>
+
+                                        </div>
+
+
+                                        </div>
+                                    </ng-container>
+
+                                </td>
+
+                            </tr>
+                            <!-- Comida -->
+                            <tr>
+                                <td class="indice-menu td-marcado ">
+                                    <p class="m-0 indice-menu ">C</p>
+                                    <p class="m-0 indice-menu ">o</p>
+                                    <p class="m-0 indice-menu ">m</p>
+                                    <p class="m-0 indice-menu ">i</p>
+                                    <p class="m-0 indice-menu ">d</p>
+                                    <p class="m-0 indice-menu ">a</p>
+                                </td>
+                                <td *ngFor="let _ of [].constructor(7); let diaNumber=index" class="px-0 td-marcado">
+                                    <div *ngIf="platosMenu[diaNumber*5+2] && (platosMenu[diaNumber*5+2].length)<4" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'2'+(platosMenu[diaNumber*5+2].length)]" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <div *ngIf="!platosMenu[diaNumber*5+2]" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'20']" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <ng-container *ngFor="let _ of [].constructor(platosMenu[diaNumber*5+2]?.length); let plaNumber=index">
+                                      <div class="mb-3 plato-en-menu" *ngIf="platosMenu[diaNumber*5+2]" [ngClass]="{'mt-5': platosMenu[diaNumber*5+2].length == 4 && plaNumber === 0}">
+
+                                          <div class="container-img-plato" *ngIf="platosMenu[diaNumber*5+2]" (mouseenter)="mostrarHoverPlato(diaNumber*5+2, plaNumber)" (mouseleave)="esconderHoverPlato(diaNumber*5+2, plaNumber)" >
+
+                                            <div class="container-cambiar-plato" [@popOverAnimation] *ngIf="dataHoverPlatos[diaNumber*5+2][plaNumber]" [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', platosMenu[diaNumber*5+2][plaNumber].uid, 'pos', diaNumber+'2'+plaNumber]">
+                                              <i class="fas fa-exchange-alt mx-1"></i><p class="mx-1 titulo-plato">Cambiar de plato</p>
+                                            </div>
+
+                                            <div class="menu-plato-del">
+                                              <a class="btn btn-eliminar" (click)="borrarPlato(diaNumber,2,plaNumber)" (mouseenter)="esconderHoverPlato(diaNumber*5+2, plaNumber)" (mouseleave)="mostrarHoverPlato(diaNumber*5+2, plaNumber)"><i class="fas fa-times cursor-pointer del"></i></a>
+                                            </div>
+
+                                            <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber] && platosMenu[diaNumber*5+2][plaNumber].imagen" src="{{'../../../assets/img/platos/' + platosMenu[diaNumber*5+2][plaNumber].imagen}}" class="img-menu " alt=" ">
+                                            <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber] && !platosMenu[diaNumber*5+2][plaNumber].imagen" src="../../../assets/img/platos/noimage.jpg" class="img-menu " alt=" ">
+
+                                            <ng-container *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber]">
+                                              <div class="gradiente-menu ">
+                                                <div class="intolerancias-plato ">
+                                                    <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber].intolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber].intolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber].intolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber].intolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber].intolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber].intolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+2] && platosMenu[diaNumber*5+2][plaNumber].intolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                                </div>
+                                                  <p class="titulo-plato " *ngIf="platosMenu[diaNumber*5+2]">{{platosMenu[diaNumber*5+2][plaNumber].nombre}}</p>
+                                              </div>
+                                            </ng-container>
+                                          </div>
+
+                                        </div>
+                                    </ng-container>
+
+                                </td>
+
+                            </tr>
+                            <!-- Merienda -->
+                            <tr>
+                                <td class="indice-menu td-marcado ">
+                                    <p class="m-0 indice-menu ">M</p>
+                                    <p class="m-0 indice-menu ">e</p>
+                                    <p class="m-0 indice-menu ">r</p>
+                                    <p class="m-0 indice-menu ">i</p>
+                                    <p class="m-0 indice-menu ">e</p>
+                                    <p class="m-0 indice-menu ">n</p>
+                                    <p class="m-0 indice-menu ">d</p>
+                                    <p class="m-0 indice-menu ">a</p>
+                                </td>
+                                <td *ngFor="let _ of [].constructor(7); let diaNumber=index" class="px-0 td-marcado">
+                                    <div *ngIf="platosMenu[diaNumber*5+3] && (platosMenu[diaNumber*5+3].length)<4" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'3'+(platosMenu[diaNumber*5+3].length)]" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <div *ngIf="!platosMenu[diaNumber*5+3]" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'30']" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <ng-container *ngFor="let _ of [].constructor(platosMenu[diaNumber*5+3]?.length); let plaNumber=index">
+                                      <div class="mb-3 plato-en-menu" *ngIf="platosMenu[diaNumber*5+3]" [ngClass]="{'mt-5': platosMenu[diaNumber*5+3].length == 4 && plaNumber === 0}">
+
+
+                                        <div class="container-img-plato" *ngIf="platosMenu[diaNumber*5+3]" (mouseenter)="mostrarHoverPlato(diaNumber*5+3, plaNumber)" (mouseleave)="esconderHoverPlato(diaNumber*5+3, plaNumber)">
+
+                                            <div class="container-cambiar-plato" [@popOverAnimation] *ngIf="dataHoverPlatos[diaNumber*5+3][plaNumber]" [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', platosMenu[diaNumber*5+3][plaNumber].uid, 'pos', diaNumber+'3'+plaNumber]">
+                                              <i class="fas fa-exchange-alt mx-1"></i><p class="mx-1 titulo-plato">Cambiar de plato</p>
+                                            </div>
+
+                                            <div class="menu-plato-del">
+                                                <a class="btn btn-eliminar" (click)="borrarPlato(diaNumber,3,plaNumber)" (mouseenter)="esconderHoverPlato(diaNumber*5+3, plaNumber)" (mouseleave)="mostrarHoverPlato(diaNumber*5+3, plaNumber)"><i class="fas fa-times cursor-pointer del"></i></a>
+                                            </div>
+
+                                            <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber] && platosMenu[diaNumber*5+3][plaNumber].imagen" src="{{'../../../assets/img/platos/' + platosMenu[diaNumber*5+3][plaNumber].imagen}}" class="img-menu " alt=" ">
+                                            <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber] && !platosMenu[diaNumber*5+3][plaNumber].imagen" src="../../../assets/img/platos/noimage.jpg" class="img-menu " alt=" ">
+
+                                            <ng-container *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber]">
+                                              <div class="gradiente-menu">
+                                                <div class="intolerancias-plato ">
+                                                    <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber].intolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber].intolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber].intolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber].intolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber].intolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber].intolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+3] && platosMenu[diaNumber*5+3][plaNumber].intolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                                </div>
+                                                  <p class="titulo-plato " *ngIf="platosMenu[diaNumber*5+3]">{{platosMenu[diaNumber*5+3][plaNumber].nombre}}</p>
+                                              </div>
+                                            </ng-container>
+                                          </div>
+
+                                        </div>
+                                    </ng-container>
+
+                                </td>
+
+                            </tr>
+                            <!-- Cena -->
+                            <tr>
+                                <td class="indice-menu td-marcado-bottom td-marcado ">
+                                    <p class="m-0 indice-menu ">C</p>
+                                    <p class="m-0 indice-menu ">e</p>
+                                    <p class="m-0 indice-menu ">n</p>
+                                    <p class="m-0 indice-menu ">a</p>
+                                </td>
+                                <td *ngFor="let _ of [].constructor(7); let diaNumber=index" class="px-0 td-marcado">
+                                    <div *ngIf="platosMenu[diaNumber*5+4] && (platosMenu[diaNumber*5+4].length)<4" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'4'+(platosMenu[diaNumber*5+4].length)]" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <div *ngIf="!platosMenu[diaNumber*5+4]" class="add-plato">
+                                      <a [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', '0', 'pos', diaNumber+'40']" class="btn btn-add bg-primario text-center text-white add"><i class="fas fa-plus mr-2 add"></i>Añadir</a>
+                                    </div>
+
+                                    <ng-container *ngFor="let _ of [].constructor(platosMenu[diaNumber*5+4]?.length); let plaNumber=index">
+                                      <div class="mb-3 plato-en-menu" *ngIf="platosMenu[diaNumber*5+4]" [ngClass]="{'mt-5': platosMenu[diaNumber*5+4].length == 4 && plaNumber === 0}">
+
+                                        <div class="container-img-plato" *ngIf="platosMenu[diaNumber*5+4]" (mouseenter)="mostrarHoverPlato(diaNumber*5+4, plaNumber)" (mouseleave)="esconderHoverPlato(diaNumber*5+4, plaNumber)">
+
+                                            <div class="container-cambiar-plato" [@popOverAnimation] *ngIf="dataHoverPlatos[diaNumber*5+4][plaNumber]" [routerLink]="['/admin/menus/editar-menu/', uidMenu, 'buscador-plato', platosMenu[diaNumber*5+4][plaNumber].uid, 'pos', diaNumber+'4'+plaNumber]">
+                                              <i class="fas fa-exchange-alt mx-1"></i><p class="mx-1 titulo-plato">Cambiar de plato</p>
+                                            </div>
+
+                                            <div class="menu-plato-del">
+                                                <a class="btn btn-eliminar" (click)="borrarPlato(diaNumber,4,plaNumber)" (mouseenter)="esconderHoverPlato(diaNumber*5+4, plaNumber)" (mouseleave)="mostrarHoverPlato(diaNumber*5+4, plaNumber)"><i class="fas fa-times cursor-pointer del"></i></a>
+                                            </div>
+
+                                            <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber] && platosMenu[diaNumber*5+4][plaNumber].imagen" src="{{'../../../assets/img/platos/' + platosMenu[diaNumber*5+4][plaNumber].imagen}}" class="img-menu " alt=" ">
+                                            <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber] && !platosMenu[diaNumber*5+4][plaNumber].imagen" src="../../../assets/img/platos/noimage.jpg" class="img-menu " alt=" ">
+
+                                            <ng-container *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber]">
+                                              <div class="gradiente-menu">
+                                                <div class="intolerancias-plato">
+                                                    <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber].intolerancias.includes('lacteos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/lacteos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber].intolerancias.includes('gluten') === true" style="width: 25px;" src="../../../assets/img/intolerancias/gluten.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber].intolerancias.includes('moluscos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/moluscos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber].intolerancias.includes('cacahuetes') === true" style="width: 25px;" src="../../../assets/img/intolerancias/cacahuetes.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber].intolerancias.includes('crustaceos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/crustaceos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber].intolerancias.includes('huevos') === true" style="width: 25px;" src="../../../assets/img/intolerancias/huevos.svg" alt="">
+                                                    <img *ngIf="platosMenu[diaNumber*5+4] && platosMenu[diaNumber*5+4][plaNumber].intolerancias.includes('pescado') === true" style="width: 25px;" src="../../../assets/img/intolerancias/pescado.svg" alt="">
+                                                </div>
+                                                <p class="titulo-plato" *ngIf="platosMenu[diaNumber*5+4]">{{platosMenu[diaNumber*5+4][plaNumber].nombre}}</p>
+                                              </div>
+                                            </ng-container>
+                                          </div>
+
+                                        </div>
+                                    </ng-container>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

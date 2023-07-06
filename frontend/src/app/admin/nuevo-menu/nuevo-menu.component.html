@@ -1,0 +1,71 @@
+<!-- Topnav -->
+<app-navbar-admin></app-navbar-admin>
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+  <div class="row">
+      <div class="col">
+          <!-- Datatable -->
+          <div class="card">
+<!-- Card header -->
+<div class="card-header d-flex justify-content-between">
+  <h3 class="mb-0">Crear menú</h3>
+  <button [routerLink]="'/admin/menus/'" class="btn btn-crear">Volver</button>
+</div>
+
+
+
+<div class="container-fluid mt-4">
+
+  <form class="container" [formGroup]="datosForm" (ngSubmit)="crearMenu()">
+
+    <div class="form-group row align-items-center justify-content-center">
+      <label for="nombre" class="font-weight-bold col-12 col-sm-2 col-form-label">Nombre*</label><br>
+      <div class="col-12 col-sm-8">
+        <input type="text" class="form-control" formControlName="nombre" id="nombre" required>
+      </div>
+    </div>
+
+    <div class="form-group row align-items-center justify-content-center">
+      <label for="nombre" class="font-weight-bold col-12 col-sm-2">Objetivo*</label><br>
+      <div class="input-group w-25 col-12 col-sm-8">
+        <select class="form-control" formControlName="objetivo">
+          <option value="" selected>Selecciona el objetivo</option>
+          <option *ngFor="let objetivo of elementos[0].elementos;" value="{{objetivo.id}}">{{objetivo.nombre}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row align-items-center justify-content-center">
+      <label for="fecharec" class="font-weight-bold col-12 col-sm-2">Fecha recomendada*</label><br>
+      <div class="col-12 col-sm-8">
+        <div *ngFor="let fecha of posiblesFechas; let i = index">
+          <input type="checkbox" formArrayName="fecharec" class="mr-2"id="{{fecha.name}}" value="{{fecha.name}}" [checked]="fecha.marcado" (change)="onCheckboxChange($event, fecha.id)">
+          <label class="form-check-label" for="{{fecha.name}}">{{fecha.name}}</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex align-items-center justify-content-end mb-4">
+      <a routerLink="/admin/menus" class="btn btn-gris">Cancelar</a>
+      <input type="submit" value="Crear" class="btn btn-primario text-white">
+  </div>
+</form>
+
+</div>
+
+
+
+          </div>
+      </div>
+  </div>
+  <app-footer></app-footer>
+</div>
